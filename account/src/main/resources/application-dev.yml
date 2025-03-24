@@ -1,0 +1,13 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  devtools:
+    add-properties: true
+
+openapi:
+  service:
+    api-docs: account-service
+    server: http://localhost:${server.port}
+    title: Account service
+    version: 1.0.0
