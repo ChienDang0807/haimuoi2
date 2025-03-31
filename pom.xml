@@ -19,6 +19,7 @@
         <module>api-gateway</module>
         <module>account</module>
         <module>authentication</module>
+        <module>mail</module>
     </modules>
 
     <properties>

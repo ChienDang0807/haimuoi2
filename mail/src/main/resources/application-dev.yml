@@ -18,7 +18,7 @@ spring:
 
 openapi:
   service:
-    api-docs: account-service
+    api-docs: mail-service
     server: http://localhost:${server.port}
-    title: Account service
+    title: Mail service
     version: 1.0.0

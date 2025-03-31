@@ -16,6 +16,8 @@ import vn.chiendt.dto.request.UserUpdateRequest;
 import vn.chiendt.dto.response.ApiResponse;
 import vn.chiendt.service.UserService;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/user")
 @Tag(name = "User Controller")
@@ -94,20 +96,20 @@ public class UserController {
                 .build();
     }
 
-//    @Operation(summary = "Confirm Email", description = "Confirm email for account")
-//    @GetMapping("/confirm-email")
-//    public void confirmEmail(@RequestParam String secretCode, HttpServletResponse response) throws IOException {
-//        log.info("Confirm email for account with secretCode: {}", secretCode);
-//
-//        try {
-//            // check or compare secret code from db
-//        } catch (Exception e) {
-//            log.error("Verification fail, message={}", e.getMessage(), e);
-//        } finally {
-//            // direct to login page
-//            response.sendRedirect("https://tayjava.vn/wp-admin/");
-//        }
-//    }
+    @Operation(summary = "Confirm Email", description = "Confirm email for account")
+    @GetMapping("/confirm-email")
+    public void confirmEmail(@RequestParam String secretCode, HttpServletResponse response) throws IOException {
+        log.info("Confirm email for account with secretCode: {}", secretCode);
+
+        try {
+            // check or compare secret code from db
+        } catch (Exception e) {
+            log.error("Verification fail, message={}", e.getMessage(), e);
+        } finally {
+            // direct to login page
+            response.sendRedirect("https://tayjava.vn/wp-admin/");
+        }
+    }
 
     @Operation(summary = "Delete user", description = "API activate user from database")
     @DeleteMapping("/del/{userId}")
