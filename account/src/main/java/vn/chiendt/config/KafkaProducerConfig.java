@@ -33,6 +33,10 @@ public class KafkaProducerConfig {
         log.info("Creating producer factory");
 
         Map<String, Object> props = new HashMap<>();
+        // props.put(ProducerConfig.ACKS_CONFIG, "all" ); // default: 1
+        // props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 67108864L); // default: 32MB
+        // props.put(ProducerConfig.BATCH_SIZE_CONFIG , 65536 ); //default: 16kb
+        // props.put(ProducerConfig.LINGER_MS_CONFIG, 10 ); //default: 0 ( cu co message la gui )
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);

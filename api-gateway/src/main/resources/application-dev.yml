@@ -32,7 +32,14 @@ spring:
             - Path=/account/**, /v3/api-docs/account-service
           filters:
             - RewritePath=/account/(?<segment>.*), /$\{segment} # thay thế ký tự /account/ thành /
-#            - CustomizeFilter
+            - CustomizeFilter
+        - id: mail-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/mail/**, /v3/api-docs/mail-service
+          filters:
+            - RewritePath=/mail/(?<segment>.*), /$\{segment} # thay thế ký tự /mail/ thành /
+            - CustomizeFilter
 #        - id: product-service
 #          uri: http://localhost:8083
 #          predicates:

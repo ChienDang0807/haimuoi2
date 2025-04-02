@@ -173,6 +173,7 @@ public class UserServiceImpl implements UserService {
             Map<String,Object> message = new LinkedHashMap<>();
             message.put("id", newUser.getId());
             message.put("email",req.getEmail());
+            message.put("username",req.getUsername());
             message.put("secretCode", RandomStringUtils.randomAlphabetic(6));
 
             String json = new Gson().toJson(message);

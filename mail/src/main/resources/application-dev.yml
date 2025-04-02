@@ -15,6 +15,9 @@ spring:
   kafka:
     bootstrap-servers: ${KAFKA_SERVER:localhost:29092}
     topic: send-email-register-topic
+  sendgrid:
+    api-key: ${SENDGRID_KEY}
+    template-id: ${SENDGRID_TEMPLATE}
 
 openapi:
   service:
