@@ -1,0 +1,21 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  devtools:
+    add-properties: true
+  data:
+    mongodb:
+      host: ${MONGODB_HOST:localhost}
+      port: ${MONGODB_PORT:27017}
+      database: ${MONGODB_DB:product_db}
+  kafka:
+    bootstrap-servers: localhost:29092
+    topic: checkout-order-topic
+
+openapi:
+  service:
+    api-docs: order-service
+    server: http://localhost:${server.port}
+    title: Order service
+    version: 1.0.0

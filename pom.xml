@@ -20,6 +20,8 @@
         <module>account</module>
         <module>authentication</module>
         <module>mail</module>
+        <module>products</module>
+        <module>order</module>
     </modules>
 
     <properties>
@@ -30,6 +32,7 @@
         <lombok.version>1.18.36</lombok.version>
         <protoc.version>3.21.12</protoc.version>
         <grpc.version>1.68.0</grpc.version>
+        <apache.poi.version>5.2.5</apache.poi.version>
     </properties>
 
     <profiles>
@@ -55,6 +58,20 @@
             </properties>
         </profile>
     </profiles>
+
+    <dependencies>
+        <!-- Apache POI - Excel Support -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${apache.poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache.poi.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <!-- Extension for build file .proto -->
