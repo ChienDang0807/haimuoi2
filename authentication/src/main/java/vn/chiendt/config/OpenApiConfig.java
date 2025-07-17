@@ -23,7 +23,7 @@ public class OpenApiConfig {
     public GroupedOpenApi publicApi(@Value("${openapi.service.api-docs}") String apiDocs) {
         return GroupedOpenApi.builder()
                 .group(apiDocs)
-                .packagesToScan("vn.tayjava.controller")
+                .packagesToScan("vn.chiendt.controller")
                 .build();
     }
 
