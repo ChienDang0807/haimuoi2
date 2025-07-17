@@ -52,13 +52,13 @@ spring:
 #            - Path=/inventory/**, /v3/api-docs/inventory-service
 #          filters:
 #            - RewritePath=/inventory/(?<segment>.*), /inventory/$\{segment} # thay thế ký tự /inventory/ thành /
-#        - id: mail-service
-#          uri: http://localhost:8087
-#          predicates:
-#            - Path=/mail/**, /v3/api-docs/mail-service
-#          filters:
-#            - RewritePath=/mail/(?<segment>.*), /mail/$\{segment} # thay thế ký tự /mail/ thành /
-#            - CustomizeFilter
+        - id: mail-service
+          uri: http://localhost:8087
+          predicates:
+            - Path=/mail/**, /v3/api-docs/mail-service
+          filters:
+            - RewritePath=/mail/(?<segment>.*), /mail/$\{segment} # thay thế ký tự /mail/ thành /
+            - CustomizeFilter
 
 springdoc:
   api-docs:
@@ -74,14 +74,14 @@ springdoc:
         name: Authentication Service
       - url: /v3/api-docs/account-service
         name: Account Service
-#      - url: /v3/api-docs/product-service
-#        name: Product Service
-#      - url: /v3/api-docs/order-service
-#        name: Order Service
-#      - url: /v3/api-docs/inventory-service
-#        name: Inventory Service
-#      - url: /v3/api-docs/mail-service
-#        name: Mail Service
+      - url: /v3/api-docs/product-service
+        name: Product Service
+      - url: /v3/api-docs/order-service
+        name: Order Service
+      - url: /v3/api-docs/inventory-service
+        name: Inventory Service
+      - url: /v3/api-docs/mail-service
+        name: Mail Service
 
 #redis:
 #  host: localhost
