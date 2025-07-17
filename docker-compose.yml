@@ -128,6 +128,22 @@ services:
     networks:
       - default
 
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.13.4
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+#      - ELASTICSEARCH_USERNAME=kibana_sys
+#      - ELASTICSEARCH_PASSWORD=kibanapassword
+      - ELASTICSEARCH_SERVICEACCOUNT_TOKEN=AAEAAWVsYXN0aWMva2liYW5hL215LWtpYmFuYS10b2tlbjo0ZHlLQ0h3NFNneUV4OGVJQUlUalV3
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - default
+
+
 #  api-gateway:
 #    container_name: api-gateway
 #    build:

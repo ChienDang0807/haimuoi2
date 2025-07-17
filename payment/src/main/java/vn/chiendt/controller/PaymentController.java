@@ -27,7 +27,7 @@ public class PaymentController {
     public ResponseEntity<Map<String, String>> createPaymentIntent(@RequestBody PaymentIntentRequest request) throws StripeException {
         log.info("Create payment intent");
 
-        PaymentIntentResponse response = paymentService.createPaymentIntent(request.getAmount(), request.getCurrency());
+        PaymentIntentResponse response = paymentService.createPaymentIntent(request);
 
         return ResponseEntity.ok(Map.of("clientSecret", response.getClientSecret()));
     }

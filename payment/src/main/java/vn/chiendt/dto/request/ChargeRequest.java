@@ -6,12 +6,12 @@ import lombok.Getter;
 import vn.chiendt.common.Currency;
 import vn.chiendt.common.PaymentMethod;
 
-import java.io.Serializable;
-
 @Getter
-public class PaymentIntentRequest implements Serializable {
+public class ChargeRequest {
+    @NotBlank(message = "token must be not blank")
+    private String token;
 
-    @NotNull(message = "customerId must be not null")
+    // @NotNull(message = "customerId must be not null")
     private Long customerId;
 
     @NotNull(message = "paymentMethod must be not blank")
