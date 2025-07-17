@@ -33,26 +33,19 @@ spring:
           filters:
             - RewritePath=/account/(?<segment>.*), /$\{segment} # thay thế ký tự /account/ thành /
             - CustomizeFilter
-        - id: mail-service
+        - id: product-service
           uri: http://localhost:8083
           predicates:
-            - Path=/mail/**, /v3/api-docs/mail-service
+            - Path=/product/**, /v3/api-docs/product-service
           filters:
-            - RewritePath=/mail/(?<segment>.*), /$\{segment} # thay thế ký tự /mail/ thành /
+            - RewritePath=/product/(?<segment>.*), /$\{segment} # thay thế ký tự /product/ thành /
             - CustomizeFilter
-#        - id: product-service
-#          uri: http://localhost:8083
-#          predicates:
-#            - Path=/product/**, /v3/api-docs/product-service
-#          filters:
-#            - RewritePath=/product/(?<segment>.*), /$\{segment} # thay thế ký tự /product/ thành /
-#            - CustomizeFilter
-#        - id: order-service
-#          uri: http://localhost:8084
-#          predicates:
-#            - Path=/order/**, /v3/api-docs/order-service
-#          filters:
-#            - RewritePath=/order/(?<segment>.*), /order/$\{segment} # thay thế ký tự /order/ thành /
+        - id: order-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/order/**, /v3/api-docs/order-service
+          filters:
+            - RewritePath=/order/(?<segment>.*), /order/$\{segment} # thay thế ký tự /order/ thành /
 #        - id: inventory-service
 #          uri: http://localhost:8086
 #          predicates:

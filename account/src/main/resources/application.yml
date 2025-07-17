@@ -15,5 +15,8 @@ management:
 
 logging:
   level:
-    root: INFO
-    web: INFO
+    org.springframework.vault: DEBUG
+    org.springframework.cloud.vault: DEBUG
+    org.springframework.cloud.vault.config: DEBUG
+    org.springframework.cloud.vault.config.client: DEBUG
+    org.springframework.cloud.vault.config.client.VaultConfigClient: DEBUG

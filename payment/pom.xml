@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>products</artifactId>
+    <artifactId>payment</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -51,9 +51,29 @@
             <scope>runtime</scope>
         </dependency>
 
+<!--        &lt;!&ndash; kafka &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.kafka</groupId>-->
+<!--            <artifactId>spring-kafka</artifactId>-->
+<!--        </dependency>-->
+
+        <!-- Stripe -->
+        <dependency>
+            <groupId>com.stripe</groupId>
+            <artifactId>stripe-java</artifactId>
+            <version>20.90.0</version> <!-- Use the latest version -->
+        </dependency>
+
+        <!-- Thymeleaf -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- Gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
         </dependency>
 
         <dependency>
@@ -69,8 +89,5 @@
             <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
-
-
     </dependencies>
-
 </project>
