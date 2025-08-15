@@ -14,7 +14,7 @@ services:
     ports:
       - '5431:5432'
     networks:
-      - default
+      - micro-kube-network
 
   mongo:
     image: mongo:6-jammy
@@ -34,7 +34,7 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
       - REDIS_DISABLE_COMMANDS=FLUSHDB;FLUSHALL
     networks:
-      - default
+      - micro-kube-network
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
@@ -45,24 +45,29 @@ services:
     ports:
       - '22181:2181'
     networks:
-      - default
+      - micro-kube-network
 
   kafka:
-    image: confluentinc/cp-kafka:latest
+    image: confluentinc/cp-kafka:7.6.0
     container_name: kafka
+    restart: unless-stopped
     depends_on:
       - zookeeper
     ports:
       - '29092:29092'
     environment:
       KAFKA_BROKER_ID: 1
+      KAFKA_PROCESS_ROLES: ""
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CONTROLLER_QUORUM_VOTERS: ""
+      KAFKA_CONTROLLER_LISTENER_NAMES: ""
     networks:
-      - default
+      - micro-kube-network
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -75,7 +80,7 @@ services:
     depends_on:
       - kafka
     networks:
-      - default
+      - micro-kube-network
 
 #  prometheus:
 #    image: prom/prometheus
@@ -126,7 +131,7 @@ services:
 #    volumes:
 #      - esdata:/usr/share/elasticsearch/data
     networks:
-      - default
+      - micro-kube-network
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.13.4
@@ -141,7 +146,7 @@ services:
     depends_on:
       - elasticsearch
     networks:
-      - default
+      - micro-kube-network
 
 
 #  api-gateway:
@@ -254,8 +259,7 @@ services:
 
 
 networks:
-  default:
-    name: micro-kube-network
+  micro-kube-network:
 
 volumes:
   postgres:
