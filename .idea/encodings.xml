@@ -7,9 +7,10 @@
     <file url="file://$PROJECT_DIR$/api-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/authentication/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/authentication/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/inventory/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mail/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/payment/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/order/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/payment/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/products/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />

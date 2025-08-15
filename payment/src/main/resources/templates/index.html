@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment Intent</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #payment-form {
+            width: 40%;
+            margin-left: 30%;
+            margin-top: 5%;
+            border: 1px silver solid;
+            padding: 20px;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+<form id="payment-form">
+    <h2>Payment by Stripe</h2>
+    <label for="card-element">Credit or debit card:</label><br>
+    <div id="card-element">
+        <!-- Elements will create input elements here -->
+    </div>
+
+    <!-- We'll put the error messages in this element -->
+    <div id="payment-result" role="alert"></div>
+
+    <br>
+    <button onclick="paymentIntentClick()">Pay</button>
+    <button onclick="chargeClick()">Charge</button>
+</form>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script th:inline="javascript">
+    const stripe = Stripe(/*[[${publishableKey}]]*/); // Use publishable key
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+
+    const form = document.getElementById('payment-form');
+
+    // Define action for button Payment Intent
+    async function paymentIntentClick() {
+        event.preventDefault();
+
+        const {paymentMethod, error} = await stripe.createPaymentMethod({
+            type: 'card',
+            card: cardElement,
+        });
+
+        if (error) {
+            console.error(error);
+        } else {
+            // Call api /create-payment-intent
+            const response = await fetch('http://localhost:8086/create-payment-intent', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    customerId: 1,
+                    paymentMethod: "card",
+                    amount: 9900,
+                    currency: "usd",
+                    description: "Example payment intent from browser"})
+            });
+
+            // Get response from backend
+            const {clientSecret} = await response.json();
+
+            // Confirm card payment
+            const {confirmError, paymentIntent} = await stripe.confirmCardPayment(
+                clientSecret, // Pass the clientSecret here
+                {
+                    payment_method: {
+                        card: cardElement,
+                    },
+                }
+            );
+
+            // Display result
+            const paymentResult = document.getElementById('payment-result');
+            if (confirmError) {
+                paymentResult.innerHTML = `<p style="color: red">Payment failed: ${confirmError.message}</p>`;
+            } else {
+                paymentResult.innerHTML = `<p style="color: blue">Payment succeeded! Payment ID: ${paymentIntent.id}</p>`;
+            }
+        }
+    }
+
+    // Define action for button Charge
+    async function chargeClick() {
+        event.preventDefault();
+
+        const {token, error} = await stripe.createToken(cardElement);
+        if (error) {
+            console.error(error);
+        } else {
+            // Send token to backend
+            const response = await fetch('http://localhost:8086/charge', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    token: token.id,
+                    customerId: 1,
+                    paymentMethod: "card",
+                    amount: 10100,
+                    currency: "usd",
+                    description: "Example charge from browser"}),
+            });
+
+            // Display result
+            const {status} = await response.json();
+            const paymentResult = document.getElementById('payment-result');
+            paymentResult.innerHTML = `<p style="color: blue">Payment status: <span style="color: red">${status}<span></p>`;
+        }
+    };
+</script>
+</body>
+</html>
