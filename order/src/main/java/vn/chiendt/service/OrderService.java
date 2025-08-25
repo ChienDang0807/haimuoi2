@@ -22,6 +22,8 @@ public interface OrderService {
 
     void cancelOrder(String orderId);
 
+    void changeOrderStatus(String orderId, OrderStatus status);
+
     BufferedImage generateQRCodeImage(String text) throws WriterException;
 
     BufferedImage generateBarCodeImage(String barcode) throws WriterException;

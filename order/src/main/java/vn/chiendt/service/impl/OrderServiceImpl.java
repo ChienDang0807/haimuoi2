@@ -43,7 +43,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order getOrderDetail(String orderId) {
-        return null;
+        log.info("getOrderDetail called");
+
+        return getOrderById(orderId);
     }
 
     @Override
@@ -122,6 +124,19 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void cancelOrder(String orderId) {
 
+    }
+
+    @Override
+    public void changeOrderStatus(String orderId, OrderStatus status) {
+        log.info("changeOrderStatus called, status: {}", status.name());
+
+        Order order = getOrderById(orderId);
+        order.setStatus(status.getValue());
+        order.setStatusName(status.name());
+        order.setUpdatedAt(new Date());
+
+        orderRepository.save(order);
+        log.info("Order changed status");
     }
 
     @Override

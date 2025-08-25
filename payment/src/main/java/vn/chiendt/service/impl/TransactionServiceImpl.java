@@ -94,6 +94,16 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    public String getOrderId(String paymentId) {
+        log.info("getOrderId called");
+
+        Transaction transaction = transactionRepository.findTransactionByPaymentId(paymentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Transaction not found with paymentId: " + paymentId));
+
+        return transaction.getOrderId();
+    }
+
+    @Override
     public Long createTransaction(Transaction transaction) {
         log.info("createTransaction called");
 
@@ -106,7 +116,7 @@ public class TransactionServiceImpl implements TransactionService {
     public void updateTransactionStatus(String paymentId, TransactionStatus status) {
         log.info("Updating transaction with paymentId {} and status {}", paymentId, status);
 
-        Transaction transaction = transactionRepository.getTransactionByPaymentId(paymentId).orElseThrow(()->new ResourceNotFoundException("Transaction not found"));
+        Transaction transaction = transactionRepository.findTransactionByPaymentId(paymentId).orElseThrow(()->new ResourceNotFoundException("Transaction not found"));
         transaction.setStatus(status);
 
         transactionRepository.save(transaction);

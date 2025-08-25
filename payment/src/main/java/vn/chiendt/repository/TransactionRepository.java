@@ -16,5 +16,5 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query(value = "select t from Transaction t where lower(t.description) like :keyword ")
     Page<Transaction> searchTransactionByKeyword(String keyword, Pageable pageable);
 
-    Optional<Transaction> getTransactionByPaymentId(String paymentId);
+    Optional<Transaction> findTransactionByPaymentId(String paymentId);
 }

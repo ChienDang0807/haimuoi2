@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: authentication-service
+    name: inventory-service
   profiles:
     active: @spring.profiles.active@
 

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import vn.chiendt.common.TransactionStatus;
 import vn.chiendt.service.TransactionService;
+import vn.chiendt.service.WebhookService;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +24,7 @@ import vn.chiendt.service.TransactionService;
 public class WebhookController {
 
     private final TransactionService transactionService;
+    private final WebhookService webhookService;
 
     @Value("${stripe.webhook-secret}")
     private String webhookSecret;
@@ -45,16 +47,16 @@ public class WebhookController {
         // Handle the event
         switch (event.getType()) {
             case "payment_intent.created":
-                handlePaymentIntentCreated(event);
+                webhookService.handlePaymentIntentCreated(event);
                 break;
             case "payment_intent.canceled":
-                handlePaymentIntentCanceled(event);
+                webhookService.handlePaymentIntentCanceled(event);
                 break;
             case "payment_intent.succeeded":
-                handlePaymentIntentSucceeded(event);
+                webhookService.handlePaymentIntentSucceeded(event);
                 break;
             case "payment_intent.payment_failed":
-                handlePaymentIntentFailed(event);
+                webhookService.handlePaymentIntentFailed(event);
                 break;
             default:
                 log.info("Unhandled event type: {}", event.getType());
@@ -63,40 +65,5 @@ public class WebhookController {
         return "Success";
     }
 
-    private void handlePaymentIntentCreated(Event event) {
-        String paymentId = getPaymentId(event);
-        log.info("Payment created: {}", paymentId);
-    }
 
-    private void handlePaymentIntentCanceled(Event event) {
-        log.info("Payment canceled: {}", getPaymentId(event));
-        transactionService.updateTransactionStatus(event.getId(), TransactionStatus.CANCELED);
-    }
-
-    private void handlePaymentIntentSucceeded(Event event) {
-        log.info("Payment succeeded: {}", getPaymentId(event));
-        transactionService.updateTransactionStatus(event.getId(), TransactionStatus.SUCCEEDED);
-    }
-
-    private void handlePaymentIntentFailed(Event event) {
-        log.info("Payment failed: {}", getPaymentId(event));
-        transactionService.updateTransactionStatus(event.getId(), TransactionStatus.FAILED);
-    }
-
-    private String getPaymentId(Event event) {
-        log.info("getPaymentId by event: {}", event.getId());
-
-        EventDataObjectDeserializer dataObjectDeserializer = event.getDataObjectDeserializer();
-
-        String rawJson = dataObjectDeserializer.getRawJson();
-
-        JsonObject jsonObject = new Gson().fromJson(rawJson, JsonObject.class);
-
-        // Extract values
-        String paymentId = jsonObject.get("id").getAsString();
-
-        log.info("Payment id: {}", paymentId);
-
-        return paymentId;
-    }
 }
