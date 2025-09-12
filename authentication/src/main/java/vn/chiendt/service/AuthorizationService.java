@@ -1,6 +1,7 @@
 package vn.chiendt.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import vn.chiendt.dto.request.CheckPermissionRequest;
 import vn.chiendt.dto.response.CheckPermissionResponse;
@@ -18,6 +19,7 @@ public class AuthorizationService {
         this.roleAndPermissionRepository = roleAndPermissionRepository;
     }
 
+    @Cacheable(value = "user-roles", key = "#username")
     public List<Long> getRoleIdsByUsername(String username) {
         log.info("getRoleIdsByUsername called");
         return roleAndPermissionRepository.findRolesByUsername(username);
@@ -28,6 +30,7 @@ public class AuthorizationService {
         return roleAndPermissionRepository.findPermissionsByRoleId(roleId);
     }
 
+    @Cacheable(value = "user-permissions", key = "#username")
     public List<PermissionResponse> getPermissionsByUsername(String username) {
         log.info("getPermissionsByUsername called");
         return roleAndPermissionRepository.findPermissionsByUsername(username);
