@@ -1,7 +1,10 @@
 package vn.chiendt.service.impl;
 
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -105,6 +108,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Cacheable(value = "user-roles", key = "#username")
     public ProductDocument getProductById(Long id) {
         log.info("Get product by id, id={}", id);
         return getProductDocumentById(id);

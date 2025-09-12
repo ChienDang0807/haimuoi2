@@ -46,12 +46,12 @@ spring:
             - Path=/order/**, /v3/api-docs/order-service
           filters:
             - RewritePath=/order/(?<segment>.*), /order/$\{segment} # thay thế ký tự /order/ thành /
-#        - id: inventory-service
-#          uri: http://localhost:8086
-#          predicates:
-#            - Path=/inventory/**, /v3/api-docs/inventory-service
-#          filters:
-#            - RewritePath=/inventory/(?<segment>.*), /inventory/$\{segment} # thay thế ký tự /inventory/ thành /
+        - id: inventory-service
+          uri: http://localhost:8086
+          predicates:
+            - Path=/inventory/**, /v3/api-docs/inventory-service
+          filters:
+            - RewritePath=/inventory/(?<segment>.*), /inventory/$\{segment} # thay thế ký tự /inventory/ thành /
         - id: mail-service
           uri: http://localhost:8087
           predicates:
@@ -83,14 +83,18 @@ springdoc:
       - url: /v3/api-docs/mail-service
         name: Mail Service
 
-#redis:
-#  host: localhost
-#  port: 6379
+redis:
+  host: localhost
+  port: 6379
 
-#grpc:
-#  client:
-#    verify-token-service:
-#      address: static://localhost:9091
-#      enableKeepAlive: true
-#      keepAliveWithoutCalls: true
-#      negotiationType: plaintext
+service:
+  authUrl: ${SERVICE_AUTH_URL:http://localhost:8081}
+  authorUrl: ${SERVICE_AUTHOR_URL:http://localhost:8090}
+
+grpc:
+  client:
+    verify-token-service:
+      address: static://localhost:9091
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
