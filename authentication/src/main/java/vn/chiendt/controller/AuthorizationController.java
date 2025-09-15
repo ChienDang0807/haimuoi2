@@ -12,6 +12,7 @@ import vn.chiendt.service.AuthorizationService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/author")
 @RequiredArgsConstructor
 @Slf4j(topic = "AUTHORIZATION-CONTROLLER")
 public class AuthorizationController {
@@ -33,5 +34,11 @@ public class AuthorizationController {
     public CheckPermissionResponse countPermissionByRequestPathAndUser(@Valid @RequestBody CheckPermissionRequest request) {
         log.info("countPermissionByRequestPathAndUser called");
         return authorizationService.countPermissionByRequestPathAndUser(request);
+    }
+
+    @GetMapping("/{username}/permissions")
+    public List<PermissionResponse> getPermissionsByUsername(@PathVariable String username) {
+        log.info("getPermissionsByUsername called");
+        return authorizationService.getPermissionsByUsername(username);
     }
 }

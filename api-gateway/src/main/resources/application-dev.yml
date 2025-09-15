@@ -59,6 +59,10 @@ spring:
           filters:
             - RewritePath=/mail/(?<segment>.*), /mail/$\{segment} # thay thế ký tự /mail/ thành /
             - CustomizeFilter
+  data:
+    redis:
+      host: localhost
+      port: 6379
 
 springdoc:
   api-docs:
@@ -83,9 +87,7 @@ springdoc:
       - url: /v3/api-docs/mail-service
         name: Mail Service
 
-redis:
-  host: localhost
-  port: 6379
+
 
 service:
   authUrl: ${SERVICE_AUTH_URL:http://localhost:8081}

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Mono;
+import vn.chiendt.client.AuthenticationServiceClient;
 import vn.chiendt.grpc.VerifyTokenGrpcResponse;
 import vn.chiendt.model.PermissionHash;
 import vn.chiendt.repository.PermissionRepository;
@@ -37,7 +38,6 @@ import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 @Slf4j
 public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilter.Config> {
 
-    private final RestTemplate restTemplate;
     private final PermissionRepository permissionRepository;
     private final VerifyTokenService verifyTokenService;
 
@@ -46,9 +46,10 @@ public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilte
     @Value("${service.authorUrl}")
     private String authorUrl;
 
+    private AuthenticationServiceClient authenticationServiceClient;
+
     public CustomizeFilter(RestTemplate restTemplate, PermissionRepository permissionRepository, VerifyTokenService verifyTokenService) {
         super(Config.class);
-        this.restTemplate = restTemplate;
         this.permissionRepository = permissionRepository;
         this.verifyTokenService = verifyTokenService;
     }
@@ -132,11 +133,7 @@ public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilte
         log.info("Verify access token");
 
         try {
-            return restTemplate.postForObject(
-                    authUrl + "/auth/verify-token",
-                    token,
-                    VerifyTokenResponse.class
-            );
+            return authenticationServiceClient.verifyAccessToken(token);
         } catch (RestClientException e) {
             return VerifyTokenResponse.builder()
                     .status(UNAUTHORIZED.value())
@@ -156,10 +153,7 @@ public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilte
         log.info("checkRoleByUsername called");
 
         try {
-            List<Long> roles = restTemplate.getForObject(
-                    authorUrl + "/roles?username=" + username,
-                    List.class
-            );
+            List<Long> roles = authenticationServiceClient.getRoleIdsByUsername(username);
             if (roles == null || roles.isEmpty()) {
                 return List.of();
             }
@@ -179,10 +173,7 @@ public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilte
         log.info("checkPermissionByUsername called");
 
         try {
-            List<PermissionResponse> permissions = restTemplate.getForObject(
-                    authorUrl + "/permissions?username=" + username,
-                    List.class
-            );
+            List<PermissionResponse> permissions = authenticationServiceClient.getPermissionsByUsername(username);
             if (permissions == null || permissions.isEmpty()) {
                 return List.of();
             }
@@ -210,11 +201,7 @@ public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilte
         request.setPath(method + " " + path);
 
         try {
-            return restTemplate.postForObject(
-                    authorUrl + "/check-permissions",
-                    request,
-                    CheckPermissionResponse.class
-            );
+            return authenticationServiceClient.countPermissionByRequestPathAndUser(request);
         } catch (RestClientException e) {
             log.error("Can not connect to author-service: ", e);
             return CheckPermissionResponse.builder()
