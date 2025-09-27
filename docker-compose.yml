@@ -29,7 +29,7 @@ services:
     container_name: redis
     hostname: redis
     ports:
-      - '6379:6379'
+      - '6319:6379'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - REDIS_DISABLE_COMMANDS=FLUSHDB;FLUSHALL
