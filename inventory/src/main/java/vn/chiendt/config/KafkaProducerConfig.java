@@ -16,13 +16,13 @@ import java.util.Map;
 
 @Configuration
 @Slf4j(topic = "KAFKA-PRODUCER")
-public class KafkaProducer {
+public class KafkaProducerConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
     @Value("${spring.kafka.topic}")
-    private String checkoutOrderTopic;
+    private String updateOrderStatus;
 
     @Value("${spring.profiles.active}")
     private String profile;
@@ -53,6 +53,6 @@ public class KafkaProducer {
 
     @Bean
     public NewTopic topic1() {
-        return new NewTopic(checkoutOrderTopic, 3, (short) 1);
+        return new NewTopic(updateOrderStatus, 3, (short) 1);
     }
 }

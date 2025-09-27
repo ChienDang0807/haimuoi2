@@ -14,6 +14,8 @@ public interface TransactionService {
 
     TransactionResponse getTransactionDetail(Long id);
 
+    String getOrderId(String paymentId);
+
     Long createTransaction(Transaction transaction);
 
     void updateTransactionStatus(String paymentId, TransactionStatus status);
