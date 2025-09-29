@@ -1,7 +1,7 @@
 spring:
   config:
     activate:
-      on-profile: dev
+      on-profile: test
   devtools:
     add-properties: true
   datasource:
@@ -17,7 +17,7 @@ spring:
       host: 127.0.0.1 # Host of the Redis server
       port: 6319 # Port of the Redis server for connection
       password: ""  # Password for connecting to the Redis server (default is empty)
-      database: 0 # Redis database number
+      database: 1 # Use different database for tests
       lettuce:
         pool: # Connection pool settings
           max-active: 8 # Maximum number of active connections in the pool (uses -1 for no limit)
@@ -26,20 +26,20 @@ spring:
           max-wait: -1ms # Maximum wait time to get a connection from the pool (uses -1 for no limit)
       connect-timeout: 30000 # Connection timeout (in milliseconds)
 
-# Redisson configuration
+# Redisson configuration for tests
 redisson:
-  connection-pool-size: 50 # Maximum number of connections in the pool
-  connection-minimum-idle-size: 10 # Minimum number of idle connections
+  connection-pool-size: 10 # Smaller pool for tests
+  connection-minimum-idle-size: 2 # Minimum number of idle connections
   idle-connection-timeout: 10000 # Idle connection timeout in milliseconds
   connect-timeout: 10000 # Connection timeout in milliseconds
   timeout: 3000 # Command timeout in milliseconds
   retry-attempts: 3 # Number of retry attempts
   retry-interval: 1500 # Retry interval in milliseconds
 
-  elasticsearch:
-    uris: http://localhost:9200
-    username: elastic
-    password: changeme
+elasticsearch:
+  uris: http://localhost:9200
+  username: elastic
+  password: changeme
 
 openapi:
   service:
