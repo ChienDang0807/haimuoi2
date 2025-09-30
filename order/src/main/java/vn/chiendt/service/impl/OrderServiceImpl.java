@@ -54,7 +54,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED)
-    public String createOrder(PlaceOrderRequest request) {
+    public Order createOrder(PlaceOrderRequest request) {
         log.info("Create order");
 
         Order order = new Order();
@@ -84,10 +84,11 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderItems(orderItems);
 
         Order result = orderRepository.save(order);
+        log.info("Order created successfully");
 
         // push kafka (optional)
 
-        return result.getId() != null ? result.getId() : null;
+        return result;
     }
 
     @Override

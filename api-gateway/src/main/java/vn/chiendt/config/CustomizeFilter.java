@@ -48,7 +48,7 @@ public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilte
 
     private AuthenticationServiceClient authenticationServiceClient;
 
-    public CustomizeFilter(RestTemplate restTemplate, PermissionRepository permissionRepository, VerifyTokenService verifyTokenService) {
+    public CustomizeFilter( PermissionRepository permissionRepository, VerifyTokenService verifyTokenService) {
         super(Config.class);
         this.permissionRepository = permissionRepository;
         this.verifyTokenService = verifyTokenService;
@@ -149,7 +149,7 @@ public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilte
      * @param username
      * @return
      */
-    List<?> getRoleByUsername(String username) {
+    List<Long> getRoleByUsername(String username) {
         log.info("checkRoleByUsername called");
 
         try {

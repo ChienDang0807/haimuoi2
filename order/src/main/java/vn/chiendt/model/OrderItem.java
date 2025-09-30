@@ -23,7 +23,7 @@ public class OrderItem {
 
     private Integer quantity;
 
-    private Double price;
+    private Long price;
 
     private String unit;
 }

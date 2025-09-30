@@ -40,9 +40,6 @@ public class TransactionController {
         log.info("Search transaction");
 
         request.validate();
-
-        System.out.println("Search transaction");
-
         PageResponse<?> result = transactionService.advanceSearch(request);
 
         return ApiResponse.builder()

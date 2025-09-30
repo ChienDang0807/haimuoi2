@@ -14,12 +14,12 @@ spring:
       ddl-auto: create
   kafka:
     bootstrap-servers: ${KAFKA_SERVER:localhost:29092}
-    updateOrderStatus: update-order-status-topic
+    topic: update-order-status-topic
 
 stripe:
-  secret-key: ${STRIPE_SECRET_KEY}
-  publishable-key: ${STRIPE_PUBLISHABLE_KEY}
-  webhook-secret: ${STRIPE_WEBHOOK_SECRET}
+  secret-key: ${STRIPE_SECRET_KEY:}
+  publishable-key: ${STRIPE_PUBLISHABLE_KEY:}
+  webhook-secret: ${STRIPE_WEBHOOK_SECRET:}
 
 openapi:
   service:

@@ -104,7 +104,7 @@ public class ProductServiceImpl implements ProductService {
 
             productSearchRepository.save(productDocument);
 
-            log.info("Update productDocument", productDocument);
+            log.info("Update productDocument :{}", productDocument);
             
             // Update cache
             String productCacheKey = PRODUCT_CACHE_PREFIX + product.getId();

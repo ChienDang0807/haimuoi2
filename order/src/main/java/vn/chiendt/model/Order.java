@@ -1,13 +1,14 @@
 package vn.chiendt.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import vn.chiendt.common.Currency;
+import vn.chiendt.common.PaymentMethod;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -21,12 +22,12 @@ public class Order {
 
     private Long customerId;
 
-    private BigDecimal amount;
+    private Long amount;
 
-    private String currency;
+    private Currency currency;
 
     // @JsonProperty("payment_method")
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
 
     private int status;
 

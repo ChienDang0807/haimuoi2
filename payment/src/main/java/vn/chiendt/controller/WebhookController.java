@@ -32,7 +32,6 @@ public class WebhookController {
     @Operation(summary = "Webhook", description = "API for handle Stripe events")
     @PostMapping
     public String handleWebhook(@RequestBody String payload, @RequestHeader("Stripe-Signature") String sigHeader) {
-        //log.info("Received Webhook Payload: {}", payload);
 
         Event event = null;
 

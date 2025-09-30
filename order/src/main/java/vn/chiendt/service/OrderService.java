@@ -14,7 +14,7 @@ public interface OrderService {
 
     Order getOrderDetail(String orderId);
 
-    String createOrder(PlaceOrderRequest req);
+    Order createOrder(PlaceOrderRequest req);
 
     void updateOrder(UpdateOrderRequest req);
 

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment Online</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: 30%;
+            margin: 20px auto;
+        }
+
+        .product {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .cart {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+
+        #payment-form {
+            width: 30%;
+            margin-left: 35%;
+            margin-top: 5%;
+            border: 1px silver solid;
+            padding: 20px;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Danh sách sản phẩm</h2>
+    <div class="product">
+        <span>Mì Hảo Hảo</span>
+        <button onclick="addToCart('Mì Hảo Hảo', 5000)">Thêm 5000₫</button>
+    </div>
+    <div class="product">
+        <span>Bia Hà Nội</span>
+        <button onclick="addToCart('Bia Hà Nội', 10000)">Thêm 10000₫</button>
+    </div>
+    <div class="product">
+        <span>Cá Hồi</span>
+        <button onclick="addToCart('Cá Hồi', 25000)">Thêm 25000₫</button>
+    </div>
+    <hr>
+    <h2>Giỏ hàng</h2>
+    <div class="cart" id="cart"></div>
+</div>
+
+<form id="payment-form">
+    <h2>Thanh toán</h2>
+    <label for="card-element">Credit or debit card:</label><br>
+    <div id="card-element">
+        <!-- Elements will create input elements here -->
+    </div>
+
+    <!-- We'll put the error messages in this element -->
+    <div id="payment-result" role="alert"></div>
+
+    <br>
+    <button onclick="paymentIntentClick()">Pay</button>
+</form>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script th:inline="javascript">
+    let cart = {};
+
+    function addToCart(product, price) {
+        if (!cart[product]) {
+            cart[product] = {price: price, quantity: 1};
+        } else {
+            cart[product].quantity++;
+        }
+        renderCart();
+    }
+
+    function removeFromCart(product) {
+        if (cart[product]) {
+            cart[product].quantity--;
+            if (cart[product].quantity === 0) {
+                delete cart[product];
+            }
+            renderCart();
+        }
+    }
+
+    function renderCart() {
+        const cartDiv = document.getElementById('cart');
+        cartDiv.innerHTML = '';
+        let total = 0;
+        for (let product in cart) {
+            let item = cart[product];
+            total += item.price * item.quantity;
+            cartDiv.innerHTML += `<div class="cart-item">
+                    <span>${product} (x${item.quantity}) - ${item.price * item.quantity}₫</span>
+                    <button onclick="removeFromCart('${product}')">Xoá</button>
+                </div>`;
+        }
+        cartDiv.innerHTML += `<hr><strong>Total: ${total}₫</strong>`;
+    }
+
+    const stripe = Stripe(/*[[${publishableKey}]]*/); // Use publishable key
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+
+    const form = document.getElementById('payment-form');
+
+    // Define action for button Payment Intent
+    async function paymentIntentClick() {
+        event.preventDefault();
+
+        const {paymentMethod, error} = await stripe.createPaymentMethod({
+            type: 'card',
+            card: cardElement,
+        });
+
+        if (error) {
+            console.error(error);
+        } else {
+            const orderResponse = await fetch('http://localhost:8085/order/add', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    customerId: 4,
+                    amount: 50000,
+                    currency: "vnd",
+                    paymentMethod: "card",
+                    orderItems: [
+                        {
+                            productId: 1,
+                            quantity: 2,
+                            productName: "Mì Hảo Hảo",
+                            price: 5000,
+                            unit: "gói"
+                        },
+                        {
+                            productId: 2,
+                            quantity: 1,
+                            productName: "Bia Hà Nội",
+                            price: 10000,
+                            unit: "lon"
+                        },
+                        {
+                            productId: 3,
+                            quantity: 1,
+                            productName: "Cá Hồi",
+                            price: 25000,
+                            unit: "gram"
+                        }
+                    ]
+                })
+            });
+
+            // Get orderId
+            const {status, message, data} = await orderResponse.json();
+
+            console.log("OrderID: " + data)
+
+            // Call api /create-payment-intent
+            const responseIntent = await fetch('http://localhost:8086/create-payment-intent', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    customerId: 2,
+                    orderId: "fdad3252-b14b-4ae7-81e1-f36583f57ca3",
+                    paymentMethod: "card",
+                    amount: 22222,
+                    currency: "usd",
+                    description: "Example payment intent from browser"
+                })
+            });
+
+            // Get response from backend
+            const {clientSecret} = await responseIntent.json();
+
+            // Confirm card payment
+            const {confirmError, paymentIntent} = await stripe.confirmCardPayment(
+                clientSecret, // Pass the clientSecret here
+                {
+                    payment_method: {
+                        card: cardElement,
+                    },
+                }
+            );
+
+            // Display result
+            const paymentResult = document.getElementById('payment-result');
+            if (confirmError) {
+                paymentResult.innerHTML = `<p style="color: red">Payment failed: ${confirmError.message}</p>`;
+            } else {
+                paymentResult.innerHTML = `<p style="color: blue">Payment succeeded! Payment ID: ${paymentIntent.id}</p>`;
+            }
+        }
+    }
+</script>
+</body>
+</html>

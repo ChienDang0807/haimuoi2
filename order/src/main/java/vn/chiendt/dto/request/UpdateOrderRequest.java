@@ -4,9 +4,10 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.ToString;
+import vn.chiendt.common.Currency;
 import vn.chiendt.common.OrderStatus;
+import vn.chiendt.common.PaymentMethod;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -15,13 +16,13 @@ public class UpdateOrderRequest {
     private String id;
 
     @NotNull(message = "amount must be not null")
-    private BigDecimal amount;
+    private Long amount;
 
     @NotNull(message = "currency must be not null")
-    private String currency;
+    private Currency currency;
 
     @NotNull(message = "paymentMethod must be not null")
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
 
     private OrderStatus status;
 

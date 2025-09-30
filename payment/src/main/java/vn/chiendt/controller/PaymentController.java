@@ -5,10 +5,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vn.chiendt.dto.request.PaymentIntentRequest;
 import vn.chiendt.dto.response.PaymentIntentResponse;
 import vn.chiendt.service.PaymentService;
@@ -29,7 +26,7 @@ public class PaymentController {
 
         PaymentIntentResponse response = paymentService.createPaymentIntent(request);
 
-        return ResponseEntity.ok(Map.of("clientSecret", response.getClientSecret()));
+        return ResponseEntity.ok(Map.of("paymentId",response.getPaymentId() ,"clientSecret",response.getClientSecret()));
     }
 
     @Operation(summary = "Confirm payment", description = "API check payment status")
@@ -43,8 +40,8 @@ public class PaymentController {
     }
 
     @Operation(summary = "Refund", description = "API refund money for customer")
-    @PostMapping("/refund")
-    public ResponseEntity<Map<String, String>> createRefund(@RequestParam String paymentId) throws StripeException {
+    @PostMapping("/refund/{paymentId}")
+    public ResponseEntity<Map<String, String>> createRefund(@PathVariable String paymentId) throws StripeException {
         log.info("Refund payment intent");
 
         String refundId = paymentService.createRefund(paymentId);
