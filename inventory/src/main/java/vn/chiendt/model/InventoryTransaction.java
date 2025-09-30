@@ -44,4 +44,7 @@ public class InventoryTransaction {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @Version
+    private int version;
 }

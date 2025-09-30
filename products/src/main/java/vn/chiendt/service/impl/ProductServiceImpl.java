@@ -81,6 +81,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+
     @DistributedLock(key = "'product:update:' + #request.id", waitTime = 5000, leaseTime = 10000)
     public void updateProduct(ProductUpdateRequest request) {
         log.info("Update product {}", request);
