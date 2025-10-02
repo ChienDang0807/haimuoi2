@@ -20,9 +20,13 @@ services:
     image: mongo:6-jammy
     container_name: mongodb
     ports:
-      - '27017:27017'
+      - "27010:27017"
+    environment:
+      MONGO_INITDB_DATABASE: haimuoi2-monggo
     volumes:
       - mongo:/data/mongo
+    networks:
+      - micro-kube-network
 
   redis:
     image: redis:7.4.5
