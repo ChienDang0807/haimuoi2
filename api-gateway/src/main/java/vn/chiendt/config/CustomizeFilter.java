@@ -14,9 +14,9 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Mono;
 import vn.chiendt.client.AuthenticationServiceClient;
+
 import vn.chiendt.grpc.VerifyTokenGrpcResponse;
 import vn.chiendt.model.PermissionHash;
 import vn.chiendt.repository.PermissionRepository;
@@ -79,21 +79,7 @@ public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilte
                     return printErrorMessage(exchange.getResponse(), FORBIDDEN, url, grpcResponse.getMessage());
                 }
 
-                // authorization
-                // Option 1: check role
-                // getRoleByUsername(verifyTokenResponse.getUsername());
-
-                // Option 2: check permission
-                // getPermissionByUsername(verifyTokenResponse.getUsername())
-
-                // Option 3: check permission
-//                CheckPermissionResponse checkPermissionResponse = checkPermissionByUsernameAndRequestPath(verifyTokenResponse.getUsername(), request.getMethod().name(), url);
-//                log.info("checkPermissionResponse: {}", checkPermissionResponse);
-//                if (200 != checkPermissionResponse.getStatus()) {
-//                    return printErrorMessage(exchange.getResponse(), FORBIDDEN, url, checkPermissionResponse.getMessage());
-//                }
-
-                boolean isGranted = checkRoleInCache(grpcResponse.getUsername());
+                boolean isGranted = checkRoleInCache(grpcResponse.getUsername(), request.getMethod().name() + " " + url);
                 if (!isGranted) {
                     return printErrorMessage(exchange.getResponse(), FORBIDDEN, url, "Access denied");
                 }
@@ -114,11 +100,12 @@ public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilte
      * @param username
      * @return
      */
-    private boolean checkRoleInCache(String username) {
+    private boolean checkRoleInCache(String username, String requestPath) {
         Optional<PermissionHash> data = permissionRepository.findById(username);
         if (data.isPresent()) {
-            // TODO do something
-            return true;
+            PermissionHash permissionHash = data.get();
+            return permissionHash
+                    .getPermissions().stream().anyMatch(p -> Objects.equals(p, requestPath));
         }
         return false;
     }

@@ -14,5 +14,5 @@ import java.util.List;
 public class PermissionHash implements Serializable {
     @Id
     private String id; // save username
-    private List<String> roles;
+    private List<String> permissions;
 }
