@@ -84,8 +84,14 @@ public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilte
                     return printErrorMessage(exchange.getResponse(), FORBIDDEN, url, "Access denied");
                 }
 
+                // inject headers for downstream services
+                ServerHttpRequest mutatedRequest = exchange.getRequest().mutate()
+                        .header("X-Username", grpcResponse.getUsername())
+                        .header("X-User-Id", String.valueOf(grpcResponse.getUserId()))
+                        .build();
+
                 log.info("Request valid");
-                return chain.filter(exchange).then(Mono.fromRunnable(() -> {
+                return chain.filter(exchange.mutate().request(mutatedRequest).build()).then(Mono.fromRunnable(() -> {
                 }));
             } else {
                 log.info("Request not valid, URL={}", url);

@@ -52,8 +52,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             throw new AccessDeniedException(e.getMessage());
         }
 
-        String accessToken = jwtService.generateAccessToken(request.getUsername(), authorities);
-        String refreshToken = jwtService.generateRefreshToken(request.getUsername(), authorities);
+        User user = userRepository.findByUsername(request.getUsername());
+        Long userId = user != null ? user.getId() : null;
+
+        String accessToken = jwtService.generateAccessToken(request.getUsername(), userId, authorities);
+        String refreshToken = jwtService.generateRefreshToken(request.getUsername(), userId, authorities);
 
         return TokenResponse.builder().accessToken(accessToken).refreshToken(refreshToken).build();
     }
@@ -77,7 +80,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             user.getAuthorities().forEach(authority -> authorities.add(authority.getAuthority()));
 
             // generate new access token
-            String accessToken = jwtService.generateAccessToken(user.getUsername(), authorities);
+            String accessToken = jwtService.generateAccessToken(user.getUsername(), user.getId(), authorities);
 
             return TokenResponse.builder().accessToken(accessToken).refreshToken(refreshToken).build();
         } catch (Exception e) {
@@ -92,12 +95,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         try {
             String userName = jwtService.extractUsername(request, ACCESS_TOKEN);
+            Long userId = jwtService.extractUserId(request, ACCESS_TOKEN);
             log.info("extractUsername = {}", userName);
             return VerifyTokenResponse.builder()
                     .status(200)
                     .isValid(true)
                     .message("Token authenticated")
                     .username(userName)
+                    .userId(userId)
                     .build();
         } catch (Exception e) {
             log.error("Invalid access token: {}", e.getMessage());

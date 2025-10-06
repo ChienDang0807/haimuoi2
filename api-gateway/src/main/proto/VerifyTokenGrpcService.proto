@@ -15,4 +15,5 @@ message VerifyTokenGrpcResponse {
   bool isValid = 2;
   string message = 3;
   string username = 4;
+  int64 userId = 5;
 }

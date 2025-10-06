@@ -73,6 +73,20 @@ services:
     networks:
       - micro-kube-network
 
+  schema-registry:
+    image: docker.redpanda.com/redpandadata/redpanda:latest
+    command:
+      - redpanda
+      - start
+      - --overprovisioned
+      - --smp 1
+      - --memory 1G
+      - --reserve-memory 0M
+      - --node-id 0
+      - --check=false
+    ports:
+      - "8079:8079"
+
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     container_name: ms-kafka-ui
@@ -131,7 +145,7 @@ services:
         soft: -1
         hard: -1
     ports:
-      - 9200:9200
+      - "9200:9200"
 #    volumes:
 #      - esdata:/usr/share/elasticsearch/data
     networks:

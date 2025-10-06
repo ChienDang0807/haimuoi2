@@ -11,7 +11,7 @@ spring:
   jpa:
     show-sql: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
   data:
     redis:
       host: 127.0.0.1 # Host of the Redis server
@@ -25,7 +25,20 @@ spring:
           min-idle: 0 # Minimum number of idle connections in the pool
           max-wait: -1ms # Maximum wait time to get a connection from the pool (uses -1 for no limit)
       connect-timeout: 30000 # Connection timeout (in milliseconds)
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVER:localhost:29092}
+    properties:
+      specific:
+        avro:
+          reader: true
+  elasticsearch:
+    uris: http://localhost:9200
+    username: elastic
+    password: changeme
 
+
+kafka:
+  topic: product-sync-events
 # Redisson configuration
 redisson:
   connection-pool-size: 50 # Maximum number of connections in the pool
@@ -36,10 +49,6 @@ redisson:
   retry-attempts: 3 # Number of retry attempts
   retry-interval: 1500 # Retry interval in milliseconds
 
-  elasticsearch:
-    uris: http://localhost:9200
-    username: elastic
-    password: changeme
 
 openapi:
   service:

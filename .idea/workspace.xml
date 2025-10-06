@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="refactor-cart-service">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/api-gateway.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication/AUTHENTICATION.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/client/InventoryServiceClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/client/ProductServiceClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/exception/CartNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/PRODUCTS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/src/main/avro/product-sync-event.avsc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/common/AvroConvert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/common/ProductStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/config/KafkaConsumerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/config/KafkaProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/dto/response/ProductResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/mapper/ProductMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/SubscribleKafkaMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/vn/chiendt/config/CustomizeFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/vn/chiendt/config/CustomizeFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/vn/chiendt/response/VerifyTokenResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/vn/chiendt/response/VerifyTokenResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/proto/VerifyTokenGrpcService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/proto/VerifyTokenGrpcService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/dto/request/SignInRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/dto/request/SignInRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/dto/response/VerifyTokenResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/dto/response/VerifyTokenResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/service/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/service/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/service/VerifyTokenServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/service/VerifyTokenServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/service/impl/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/service/impl/AuthenticationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/service/impl/JwtServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/service/impl/JwtServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/src/main/proto/VerifyTokenGrpcService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/src/main/proto/VerifyTokenGrpcService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cart/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/dto/request/CartCreationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/dto/request/CartCreationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/dto/response/CartItemResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/dto/response/CartItemResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/model/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/model/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/model/CartItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/repository/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/repository/CartRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/service/CartItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/service/CartItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/service/impl/CartItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/service/impl/CartItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/src/main/java/vn/chiendt/controller/WebhookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/vn/chiendt/controller/WebhookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/products/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/dto/request/ProductCreationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/dto/request/ProductCreationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/dto/request/ProductUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/dto/request/ProductUpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/model/ProductDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/model/ProductDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/main/resources/application.yml" afterDir="false" />
+    </list>
+    <list id="754ca1b9-c16f-4b3c-bb9a-d1de231172cb" name="restore notification service" comment="restore notification service" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Record" />
+        <option value="Enum" />
+        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Dockerfile" />
+        <option value="Exception" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/add-shop-service" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ChienDang0807&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ChienDang0807/haimuoi2.git&quot;,
+    &quot;accountId&quot;: &quot;32fb9ae4-21f4-41ea-b799-d24d86876ac6&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="downloadAnnotationsAutomatically" value="true" />
+        <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+    <option name="explicitlyEnabledProfiles" value="dev" />
+    <option name="explicitlyDisabledProfiles" value="prod,test" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2uhzhWVv7UrxxdmVNXXwBEQrCJX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.APIGatewayApplication.executor": "Run",
+    "Application.AccountApplication.executor": "Debug",
+    "Application.AuthenticationApplication.executor": "Run",
+    "Application.CartApplication.executor": "Run",
+    "Application.MailApplication.executor": "Run",
+    "Application.NotificationApplication.executor": "Run",
+    "Application.OrderApplication.executor": "Run",
+    "Application.PaymentApplication.executor": "Run",
+    "Application.ProductApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Docker.docker-compose.yml.elasticsearch: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kafka-ui: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kafka: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kibana: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.mongo: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.postgres: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.redis: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.schema-registry: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.vault: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Maven.account [clean].executor": "Run",
+    "Maven.account [compile].executor": "Run",
+    "Maven.api-gateway [clean].executor": "Run",
+    "Maven.api-gateway [compile].executor": "Run",
+    "Maven.authentication [clean].executor": "Run",
+    "Maven.authentication [compile].executor": "Run",
+    "Maven.cart [clean].executor": "Run",
+    "Maven.cart [compile].executor": "Run",
+    "Maven.cart [install].executor": "Run",
+    "Maven.cart [test].executor": "Run",
+    "Maven.cart-service [clean].executor": "Run",
+    "Maven.cart-service [compile].executor": "Run",
+    "Maven.haimuoi2 [clean].executor": "Run",
+    "Maven.haimuoi2 [compile].executor": "Run",
+    "Maven.haimuoi2 [package].executor": "Run",
+    "Maven.products [clean].executor": "Run",
+    "Maven.products [compile].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "New/updated database configurations found",
+    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "Spring Boot.APIGatewayApplication.executor": "Run",
+    "Spring Boot.CartApplication.executor": "Run",
+    "Spring Boot.CartServiceApplication.executor": "Run",
+    "Spring Boot.InventoryApplication.executor": "Run",
+    "Spring Boot.OrderApplication.executor": "Run",
+    "Spring Boot.PaymentApplication.executor": "Run",
+    "Spring Boot.ProductApplication.executor": "Run",
+    "git-widget-placeholder": "create-cart-service",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/haimuoi2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "D:/haimuoi2/notification/src/main/java/vn/chiendt/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\haimuoi2\products\src\main\java\vn\chiendt\cache" />
+      <recent name="D:\haimuoi2\api-gateway\src\main\java\vn\chiendt\response" />
+      <recent name="D:\haimuoi2\api-gateway\src\main" />
+      <recent name="D:\haimuoi2\notification\src\main\resources" />
+      <recent name="D:\haimuoi2\inventory\src\main\java\vn\chiendt\common" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\haimuoi2\cart" />
+      <recent name="D:\haimuoi2\inventory\src\main" />
+      <recent name="D:\haimuoi2\account\src\main\java\vn\chiendt" />
+      <recent name="D:\haimuoi2\payment" />
+      <recent name="D:\haimuoi2\order" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="vn.chiendt.config" />
+      <recent name="vn.chiendt.cartservice.exception" />
+      <recent name="vn.chiendt.cartservice.config" />
+      <recent name="vn.chiendt.common" />
+      <recent name="vn.chiendt.service" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="Application" />
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="Application">
+          <value>
+            <map>
+              <entry key="PaymentApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="ProductApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ProductApplication">
+    <configuration name="PaymentApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <envs>
+        <env name="STRIPE_PUBLISHABLE_KEY" value="pk_test_51RgdzuKbhtqlylb8P180zqt0t3srdjFNXpXor3sFX9i4DngNvh9yW9qbV8t0Nvf6JpapxC07xDfHvE05ddd0L3k90077C2F8Tb" />
+        <env name="STRIPE_SECRET_KEY" value="sk_test_51RgdzuKbhtqlylb8BpNaIj7n5nPtrN5izUT3MfhvGUaeWdLCZlrlLuV63hZvJOx3lk8BKrhJpJk9gfrVnPHTdORE00Nt6ZAf1Q" />
+        <env name="STRIPE_WEBHOOK_SECRET" value="whsec_9e4fffeb937adc332210bc13826ccb9acde1bc95cef7187e8935759403007c1d " />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="vn.chiendt.PaymentApplication" />
+      <module name="payment" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="APIGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="api-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.APIGatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="account" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.AccountApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthenticationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="authentication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.AuthenticationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CartApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="cart" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.cart.CartApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InventoryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="inventory" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.InventoryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MailApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="mail" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.MailApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NotificationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="notification" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.NotificationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="order" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.OrderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PaymentApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="payment" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.PaymentApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="products" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.ProductApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="shop" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.shop.ShopApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.elasticsearch: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="elasticsearch" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.kafka-ui: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="kafka-ui" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.kibana: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="kibana" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.postgres: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="postgres" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.redis: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="redis" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.PaymentApplication" />
+      <item itemvalue="Docker.docker-compose.yml.kafka-ui: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.kibana: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.redis: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.elasticsearch: Compose Deployment" />
+      <item itemvalue="Spring Boot.APIGatewayApplication" />
+      <item itemvalue="Spring Boot.AccountApplication" />
+      <item itemvalue="Spring Boot.AuthenticationApplication" />
+      <item itemvalue="Spring Boot.CartApplication" />
+      <item itemvalue="Spring Boot.InventoryApplication" />
+      <item itemvalue="Spring Boot.MailApplication" />
+      <item itemvalue="Spring Boot.NotificationApplication" />
+      <item itemvalue="Spring Boot.OrderApplication" />
+      <item itemvalue="Spring Boot.PaymentApplication" />
+      <item itemvalue="Spring Boot.ProductApplication" />
+      <item itemvalue="Spring Boot.ShopApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml.kafka-ui: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.kibana: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.redis: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.elasticsearch: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructureViewState">
+    <option name="selectedTab" value="Logical" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="" />
+      <changelist id="754ca1b9-c16f-4b3c-bb9a-d1de231172cb" name="restore notification service" comment="" />
+      <created>1742715715547</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742715715547</updated>
+      <workItem from="1757640582804" duration="1707000" />
+      <workItem from="1757642765612" duration="6019000" />
+      <workItem from="1757657805801" duration="18000" />
+      <workItem from="1757926392948" duration="1875000" />
+      <workItem from="1757929127329" duration="2347000" />
+      <workItem from="1757989458794" duration="1013000" />
+      <workItem from="1758103971005" duration="736000" />
+      <workItem from="1758609112157" duration="67000" />
+      <workItem from="1758899971743" duration="3916000" />
+      <workItem from="1758958583822" duration="4540000" />
+      <workItem from="1758985611914" duration="9151000" />
+      <workItem from="1759027673744" duration="3509000" />
+      <workItem from="1759128077082" duration="4848000" />
+      <workItem from="1759139025321" duration="1907000" />
+      <workItem from="1759199509254" duration="7207000" />
+      <workItem from="1759213320854" duration="1869000" />
+      <workItem from="1759215804481" duration="6277000" />
+      <workItem from="1759223819627" duration="7205000" />
+      <workItem from="1759315017079" duration="30000" />
+      <workItem from="1759386855260" duration="7936000" />
+      <workItem from="1759394853704" duration="10000" />
+      <workItem from="1759395318292" duration="5148000" />
+      <workItem from="1759457467995" duration="4695000" />
+      <workItem from="1759464681969" duration="1288000" />
+      <workItem from="1759465975029" duration="55000" />
+      <workItem from="1759466180883" duration="70000" />
+      <workItem from="1759471694635" duration="6470000" />
+      <workItem from="1759478275443" duration="355000" />
+      <workItem from="1759478674474" duration="453000" />
+      <workItem from="1759479144653" duration="536000" />
+      <workItem from="1759479689625" duration="16000" />
+      <workItem from="1759479751496" duration="219000" />
+      <workItem from="1759484290819" duration="3280000" />
+      <workItem from="1759715646824" duration="113000" />
+      <workItem from="1759715776408" duration="10110000" />
+      <workItem from="1759731435730" duration="13569000" />
+    </task>
+    <task id="LOCAL-00001" summary="init-project">
+      <option name="closed" value="true" />
+      <created>1742780942765</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742780942765</updated>
+    </task>
+    <task id="LOCAL-00002" summary="init-project">
+      <option name="closed" value="true" />
+      <created>1742780966284</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742780966284</updated>
+    </task>
+    <task id="LOCAL-00003" summary="base-create-account-service">
+      <option name="closed" value="true" />
+      <created>1742997744419</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1742997744419</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update-account-service-with-kafka">
+      <option name="closed" value="true" />
+      <created>1743403181222</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743403181222</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update-account-service-with-kafka">
+      <option name="closed" value="true" />
+      <created>1743403450529</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1743403450529</updated>
+    </task>
+    <task id="LOCAL-00006" summary="finish-email-service-with-kafka">
+      <option name="closed" value="true" />
+      <created>1743562861213</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1743562861213</updated>
+    </task>
+    <task id="LOCAL-00007" summary="finish-email-service-with-kafka">
+      <option name="closed" value="true" />
+      <created>1743604585516</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1743604585516</updated>
+    </task>
+    <task id="LOCAL-00008" summary="finish-notification-service">
+      <option name="closed" value="true" />
+      <created>1758990438424</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1758990438424</updated>
+    </task>
+    <task id="LOCAL-00009" summary="config-redisson">
+      <option name="closed" value="true" />
+      <created>1758993424762</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1758993424762</updated>
+    </task>
+    <task id="LOCAL-00010" summary="implement-redisson">
+      <option name="closed" value="true" />
+      <created>1759129417338</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1759129417338</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update-inventory-service">
+      <option name="closed" value="true" />
+      <created>1759218012555</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1759218012555</updated>
+    </task>
+    <task id="LOCAL-00012" summary="update-payment-inventory-service">
+      <option name="closed" value="true" />
+      <created>1759229933716</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1759229933716</updated>
+    </task>
+    <task id="LOCAL-00013" summary="init-cart-service">
+      <option name="closed" value="true" />
+      <created>1759397456214</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1759397456214</updated>
+    </task>
+    <task id="LOCAL-00014" summary="define-service">
+      <option name="closed" value="true" />
+      <created>1759458013537</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1759458013537</updated>
+    </task>
+    <task id="LOCAL-00015" summary="refactor-cart-service">
+      <option name="closed" value="true" />
+      <created>1759472198214</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1759472198214</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="create-inventory-service" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init-project" />
+    <MESSAGE value="base-create-account-service" />
+    <MESSAGE value="update-account-service-with-kafka" />
+    <MESSAGE value="finish-email-service-with-kafka" />
+    <MESSAGE value="finish-notification-service" />
+    <MESSAGE value="config-redisson" />
+    <MESSAGE value="implement-redisson" />
+    <MESSAGE value="update-inventory-service" />
+    <MESSAGE value="update-payment-inventory-service" />
+    <MESSAGE value="init-cart-service" />
+    <MESSAGE value="define-service" />
+    <MESSAGE value="refactor-cart-service" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor-cart-service" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

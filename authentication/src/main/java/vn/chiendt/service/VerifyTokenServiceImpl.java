@@ -28,6 +28,7 @@ public class VerifyTokenServiceImpl extends VerifyTokenServiceGrpc.VerifyTokenSe
                 .setIsValid(response.isValid())
                 .setMessage(response.getMessage())
                 .setUsername(response.getUsername())
+                .setUserId(response.getUserId() == null ? 0L : response.getUserId())
                 .build();
 
         responseObserver.onNext(grpcResponse);

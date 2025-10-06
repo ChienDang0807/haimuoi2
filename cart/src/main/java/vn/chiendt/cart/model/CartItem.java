@@ -14,7 +14,5 @@ public class CartItem {
     private Double price;
     private  Integer quantity;
     private String shopId;
-
-
     private Double discount;
 }

@@ -26,13 +26,11 @@ public class SignInRequest implements Serializable {
     private String versionApp;
 
     public void validate() {
-        if (platform != null || platform != Platform.WEB) {
-            if (!StringUtils.hasLength(deviceToken)) {
-                throw new ValidationException("deviceToken must not be blank");
-            }
-            if (!StringUtils.hasLength(versionApp)) {
-                throw new ValidationException("versionApp must not be blank");
-            }
+        if (!StringUtils.hasLength(deviceToken)) {
+            throw new ValidationException("deviceToken must not be blank");
+        }
+        if (!StringUtils.hasLength(versionApp)) {
+            throw new ValidationException("versionApp must not be blank");
         }
     }
 }

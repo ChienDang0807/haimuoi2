@@ -1,0 +1,27 @@
+{
+  "type": "record",
+  "name": "ProductEvent",
+  "namespace": "com.example.avro",
+  "fields": [
+    { "name": "eventType", "type": { "type": "enum", "name": "ProductEventType", "symbols": ["CREATED", "UPDATED", "DELETED"] } },
+    { "name": "id", "type": "long" },
+    { "name": "slug", "type": ["null", "string"], "default": null },
+    { "name": "name", "type": ["null", "string"], "default": null },
+    { "name": "description", "type": ["null", "string"], "default": null },
+    {
+      "name": "price",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 12,
+        "scale": 2
+      }
+    },
+    { "name": "userId", "type": ["null", "long"], "default": null },
+    { "name": "status", "type": { "type": "enum", "name": "ProductStatus", "symbols": ["DRAFT", "ACTIVE", "INACTIVE", "DELETED"] } },
+    { "name": "attributes", "type": ["null", "string"], "default": null },
+    { "name": "timestamp", "type": "long" },
+    { "name": "createdAt", "type": ["null", "long"], "default": null },
+    { "name": "updatedAt", "type": ["null", "long"], "default": null }
+  ]
+}

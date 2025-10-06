@@ -1,16 +1,26 @@
 package vn.chiendt.service.impl;
 
 
+import com.example.avro.ProductEvent;
+import com.example.avro.ProductEventType;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import vn.chiendt.cache.redisson.annotation.DistributedLock;
 import vn.chiendt.cache.redisson.service.RedissonCacheService;
+import vn.chiendt.common.ProductStatus;
 import vn.chiendt.dto.request.ProductCreationRequest;
 import vn.chiendt.dto.request.ProductUpdateRequest;
+import vn.chiendt.dto.response.ProductResponse;
+import vn.chiendt.mapper.ProductMapper;
 import vn.chiendt.model.Product;
 import vn.chiendt.model.ProductDocument;
 import vn.chiendt.repository.ProductRepository;
@@ -19,7 +29,10 @@ import vn.chiendt.service.ProductService;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.concurrent.TimeUnit;
+
+import static vn.chiendt.common.AvroConvert.toByteBuffer;
 
 @Service
 @RequiredArgsConstructor
@@ -29,16 +42,22 @@ public class ProductServiceImpl implements ProductService {
     private final ProductSearchRepository productSearchRepository;
     private final ProductRepository productRepository;
     private final RedissonCacheService redissonCacheService;
-    
+    private final KafkaTemplate<String, ProductEvent> kafkaTemplate;
+    private final ProductMapper productMapper;
+
+    @Value("${kafka.topic}")
+    private String productSyncEvents;
+
     private static final String PRODUCT_CACHE_PREFIX = "product:";
     private static final String PRODUCT_SEARCH_CACHE_PREFIX = "product:search:";
-    private static final long CACHE_TTL_MINUTES = 30;
+    private static final long CACHE_TTL_MINUTES = 5;
 
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     @DistributedLock(key = "'product:add:' + #request.name", waitTime = 5000, leaseTime = 10000)
-    public long addProduct(ProductCreationRequest request) {
+    public ProductResponse addProduct(ProductCreationRequest request) throws JsonProcessingException {
         log.info("Add product {}", request);
 
         // Check if product with same name already exists
@@ -48,71 +67,99 @@ public class ProductServiceImpl implements ProductService {
             throw new IllegalArgumentException("Product with this name already exists");
         }
 
+
         // save to RDMS
         Product product = new Product();
+        product.setSlug(request.getSlug());
         product.setName(request.getName());
+        product.setStatus(ProductStatus.ACTIVE);
         product.setDescription(request.getDescription());
         product.setPrice(request.getPrice());
-        product.setUserId(request.getUserId());
+
+        if (request.getAttributes() != null) {
+            product.setAttributes(request.getAttributes());
+        }
 
         Product result = productRepository.save(product);
 
-        // save to elasticsearch
-        if (result.getId() != null) {
-            ProductDocument productDocument = new ProductDocument();
-            productDocument.setId(product.getId());
-            productDocument.setName(request.getName());
-            productDocument.setDescription(request.getDescription());
-            productDocument.setPrice(request.getPrice());
-            productDocument.setUserId(request.getUserId());
 
-            productSearchRepository.save(productDocument);
-            log.info("ProductDocument saved with id {}", productDocument.getId());
-            
-            // Cache the product
-            String productCacheKey = PRODUCT_CACHE_PREFIX + result.getId();
-            redissonCacheService.put(productCacheKey, productDocument, CACHE_TTL_MINUTES, TimeUnit.MINUTES);
-            
-            // Cache by name for duplicate check
-            redissonCacheService.put(cacheKey, result.getId(), CACHE_TTL_MINUTES, TimeUnit.MINUTES);
-        }
 
-        return product.getId();
+        //sync elastic search
+        ProductEvent productEvent = ProductEvent.newBuilder()
+                .setEventType(ProductEventType.CREATED)
+                .setId(result.getId())
+                .setSlug(result.getSlug())
+                .setStatus(com.example.avro.ProductStatus.valueOf(result.getStatus().name()))
+                .setName(result.getName())
+                .setDescription(result.getDescription())
+                .setPrice(toByteBuffer(result.getPrice(), 10, 2))
+                .setUserId(result.getUserId())
+                .setAttributes(objectMapper.writeValueAsString(result.getAttributes()) )
+                .setCreatedAt(result.getCreatedAt().toEpochMilli())
+                .setUpdatedAt(result.getUpdatedAt().toEpochMilli())
+                .setTimestamp(System.currentTimeMillis())
+                .build();
+        kafkaTemplate.send(productSyncEvents, productEvent);
+        log.info("ProductDocument saved with id {}", productEvent.getId());
+
+        // Cache the product
+        String productCacheKey = PRODUCT_CACHE_PREFIX + result.getId();
+        redissonCacheService.put(productCacheKey, result, CACHE_TTL_MINUTES, TimeUnit.MINUTES);
+
+        // Cache by name for duplicate check
+        redissonCacheService.put(cacheKey, result.getId(), CACHE_TTL_MINUTES, TimeUnit.MINUTES);
+
+
+
+        return productMapper.toProductResponse(result);
     }
 
     @Override
-
     @DistributedLock(key = "'product:update:' + #request.id", waitTime = 5000, leaseTime = 10000)
-    public void updateProduct(ProductUpdateRequest request) {
+    public void updateProduct(ProductUpdateRequest request) throws JsonProcessingException {
         log.info("Update product {}", request);
 
-        Product product = getProductById(request.getId());
+        Product product = getProductByProductId(request.getId());
         product.setName(request.getName());
+        product.setSlug(request.getSlug());
+        product.setStatus(request.getStatus());
         product.setDescription(request.getDescription());
         product.setPrice(request.getPrice());
         product.setUserId(request.getUserId());
 
+        if (request.getAttributes() != null) {
+            product.setAttributes(request.getAttributes());
+        }
+
         productRepository.save(product);
 
-        if (product.getId() != null) {
-            ProductDocument productDocument = getProductDocumentById(request.getId());
-            productDocument.setId(product.getId());
-            productDocument.setName(request.getName());
-            productDocument.setDescription(request.getDescription());
-            productDocument.setPrice(request.getPrice());
-            productDocument.setUserId(request.getUserId());
+        //sync elastic search
+        ProductEvent productUpdatedEvent = ProductEvent.newBuilder()
+                .setEventType(ProductEventType.UPDATED)
+                .setId(product.getId())
+                .setSlug(product.getSlug())
+                .setStatus(com.example.avro.ProductStatus.valueOf(product.getStatus().name()))
+                .setName(product.getName())
+                .setDescription(product.getDescription())
+                .setPrice(toByteBuffer(product.getPrice(), 10, 2))
+                .setUserId(product.getUserId())
+                .setAttributes(objectMapper.writeValueAsString(product.getAttributes()) )
+                .setCreatedAt(product.getCreatedAt().toEpochMilli())
+                .setUpdatedAt(product.getUpdatedAt().toEpochMilli())
+                .setTimestamp(System.currentTimeMillis())
+                .build();
+        kafkaTemplate.send(productSyncEvents, productUpdatedEvent);
+        log.info("Product updated kafka with id {}", productUpdatedEvent.getId());
 
-            productSearchRepository.save(productDocument);
 
-            log.info("Update productDocument :{}", productDocument);
-            
-            // Update cache
-            String productCacheKey = PRODUCT_CACHE_PREFIX + product.getId();
-            redissonCacheService.put(productCacheKey, productDocument, CACHE_TTL_MINUTES, TimeUnit.MINUTES);
-            
-            // Clear search cache as product name might have changed
-            clearSearchCache();
-        }
+
+        // Update cache
+        String productCacheKey = PRODUCT_CACHE_PREFIX + product.getId();
+        redissonCacheService.put(productCacheKey, product, CACHE_TTL_MINUTES, TimeUnit.MINUTES);
+
+        // Clear search cache as product name might have changed
+        clearSearchCache();
+
     }
 
     @Override
@@ -121,7 +168,7 @@ public class ProductServiceImpl implements ProductService {
         log.info("Delete product with id: {}", productId);
         
         // Get product info before deletion for cache cleanup
-        ProductDocument productDocument = getProductDocumentById(productId);
+        Product product = getProductByProductId(productId);
         
         productRepository.deleteById(productId);
         productSearchRepository.deleteById(productId);
@@ -131,7 +178,7 @@ public class ProductServiceImpl implements ProductService {
         redissonCacheService.delete(productCacheKey);
         
         // Clear name cache if exists
-        String nameCacheKey = PRODUCT_CACHE_PREFIX + "name:" + productDocument.getName();
+        String nameCacheKey = PRODUCT_CACHE_PREFIX + "name:" + product.getName();
         redissonCacheService.delete(nameCacheKey);
         
         // Clear search cache
@@ -170,7 +217,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDocument getProductById(Long id) {
+    public ProductDocument getProductDocumentById(Long id) {
         log.info("Get product by id, id={}", id);
         
         // Check cache first
@@ -195,7 +242,7 @@ public class ProductServiceImpl implements ProductService {
      * @param id
      * @return
      */
-    private Product getProductById(long id) {
+    private Product getProductByProductId(Long id) {
         return productRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Product not found"));
     }
 
@@ -224,4 +271,6 @@ public class ProductServiceImpl implements ProductService {
             log.warn("Failed to clear search cache", e);
         }
     }
+
+
 }

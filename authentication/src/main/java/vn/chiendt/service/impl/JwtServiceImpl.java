@@ -41,21 +41,27 @@ public class JwtServiceImpl implements JwtService {
     private String refreshKey;
 
     @Override
-    public String generateAccessToken(String username, List<String> authorities) {
+    public String generateAccessToken(String username, Long userId, List<String> authorities) {
         log.info("Generate access token for user {} with authorities {}", username, authorities);
 
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", authorities);
+        if (userId != null) {
+            claims.put("userId", userId);
+        }
 
         return createAccessToken(claims, username);
     }
 
     @Override
-    public String generateRefreshToken(String username, List<String> authorities) {
+    public String generateRefreshToken(String username, Long userId, List<String> authorities) {
         log.info("Generate refresh token");
 
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", authorities);
+        if (userId != null) {
+            claims.put("userId", userId);
+        }
 
         return createRefreshToken(claims, username);
     }
@@ -63,6 +69,21 @@ public class JwtServiceImpl implements JwtService {
     @Override
     public String extractUsername(String token, TokenType type) {
         return extractClaim(token, type, Claims::getSubject);
+    }
+
+    @Override
+    public Long extractUserId(String token, TokenType type) {
+        return extractClaim(token, type, claims -> {
+            Object value = claims.get("userId");
+            if (value instanceof Number number) {
+                return number.longValue();
+            }
+            try {
+                return value != null ? Long.parseLong(value.toString()) : null;
+            } catch (NumberFormatException e) {
+                return null;
+            }
+        });
     }
 
     private String createAccessToken(Map<String, Object> claims, String username) {

@@ -1,5 +1,6 @@
 package vn.chiendt.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -40,13 +41,20 @@ public class ProductController {
         return ApiResponse.builder()
                 .status(HttpStatus.OK.value())
                 .message("product list")
-                .data(productService.getProductById(productId))
+                .data(productService.getProductDocumentById(productId))
                 .build();
     }
 
     @PostMapping("/add")
-    public ApiResponse addProduct(@Valid @RequestBody ProductCreationRequest request) {
+    public ApiResponse addProduct(@RequestHeader(value = "X-User-Id", required = false) Long userId,
+                                  @RequestHeader(value = "X-Username", required = false) String username,
+                                  @Valid @RequestBody ProductCreationRequest request) throws JsonProcessingException {
         log.info("Add new product");
+
+        // Enforce user from gateway instead of client payload
+        if (userId != null) {
+            request.setUserId(userId);
+        }
 
         return ApiResponse.builder()
                 .status(HttpStatus.CREATED.value())
@@ -56,7 +64,7 @@ public class ProductController {
     }
 
     @PutMapping("/upd")
-    public ApiResponse updateProduct(@RequestBody ProductUpdateRequest request) {
+    public ApiResponse updateProduct(@RequestBody ProductUpdateRequest request) throws  JsonProcessingException {
         log.info("Update product");
 
         productService.updateProduct(request);

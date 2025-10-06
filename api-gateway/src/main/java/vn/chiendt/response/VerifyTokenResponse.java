@@ -14,4 +14,5 @@ public class VerifyTokenResponse implements Serializable {
     private String message;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String username;
+    private Long userId;
 }

@@ -1,26 +1,36 @@
 package vn.chiendt.dto.request;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 @Getter
 @Setter
 public class ProductCreationRequest implements Serializable {
-    @NotBlank(message = "name must be not blank")
+
+    @NotBlank(message = "Product name is required")
+    @Size(max = 255, message = "Product name cannot exceed 255 characters")
     private String name;
 
+    @Size(max = 2000, message = "Description cannot exceed 2000 characters")
     private String description;
 
-    @NotNull(message = "price must be not null")
-    @Min(value = 1, message = "price must be equals or greater than 1")
-    private Double price;
+    @NotNull(message = "Price is required")
+    @DecimalMin(value = "0.0", inclusive = false, message = "Price must be greater than 0")
+    @Digits(integer = 13, fraction = 2, message = "Price must be a valid number with up to 2 decimal places")
+    private BigDecimal price;
 
-    @NotNull(message = "userId must be not null")
-    @Min(value = 1, message = "userId must be equals or greater than 1")
-    private Integer userId;
+    private Long userId;
+
+    @NotBlank(message = "Slug is required")
+    @Size(max = 255, message = "Slug cannot exceed 255 characters")
+    private String slug;
+
+    // Optional JSON attributes
+    private Map<String, String> attributes = new HashMap<>();
 }

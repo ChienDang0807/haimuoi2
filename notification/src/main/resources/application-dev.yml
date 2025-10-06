@@ -1,0 +1,18 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  devtools:
+    add-properties: true
+
+onesignal:
+  api-url: ${ONESIGNAL_API_URL:https://onesignal.com/api/v1/notifications}
+  app-id: ${ONESIGNAL_APP_ID}
+  rest-api-key: ${ONESIGNAL_REST_API_KEY}
+
+openapi:
+  service:
+    api-docs: notification-service
+    server: http://localhost:${server.port}
+    title: Notification service
+    version: 1.0.0

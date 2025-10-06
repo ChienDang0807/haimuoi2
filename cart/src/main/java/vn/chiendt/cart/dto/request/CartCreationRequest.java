@@ -4,8 +4,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import vn.chiendt.cartservice.common.CartState;
-
+import vn.chiendt.cart.common.CartState;
 
 
 import java.util.ArrayList;
