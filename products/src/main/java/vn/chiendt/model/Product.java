@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.SqlTypes;
@@ -12,7 +11,6 @@ import vn.chiendt.common.ProductStatus;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.Date;
 import java.util.Map;
 
 @Getter
@@ -46,7 +44,7 @@ public class Product {
 
     @Column(columnDefinition = "jsonb")
     @JdbcTypeCode(SqlTypes.JSON)
-    private Map<String,String> attributes; // {"Size":"M","Color":"Red"}
+    private Map<String,String> attributes;
 
     @CreationTimestamp
     @Column(name = "created_at")

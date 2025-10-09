@@ -16,7 +16,9 @@ import vn.chiendt.exception.ResourceNotFoundException;
 import vn.chiendt.model.InventoryTransaction;
 import vn.chiendt.repository.InventoryTransactionRepository;
 import vn.chiendt.service.InventoryTransactionService;
+import vn.chiendt.service.InventoryItemService;
 import vn.chiendt.utils.PagingUtils;
+import vn.chiendt.common.TransactionType;
 
 import java.util.List;
 
@@ -27,6 +29,7 @@ import java.util.List;
 public class InventoryTransactionServiceImpl implements InventoryTransactionService {
 
     private final InventoryTransactionRepository inventoryTransactionRepository;
+    private final InventoryItemService inventoryItemService;
 
     /**
      * Get all inventories
@@ -83,7 +86,7 @@ public class InventoryTransactionServiceImpl implements InventoryTransactionServ
      * @return
      */
     @Override
-    @Transactional()
+
     public Long addInventoryTransaction(InventoryTransactionCreationRequest request) {
         log.info("addInventoryTransaction called");
 
@@ -96,7 +99,32 @@ public class InventoryTransactionServiceImpl implements InventoryTransactionServ
         InventoryTransaction result = inventoryTransactionRepository.save(inventoryTransaction);
         log.info("Inventory transaction created");
 
+        // If this is an initial stock transaction, initialize the inventory item
+        if (request.getType() == TransactionType.INITIAL_STOCK) {
+            inventoryItemService.initializeInventory(request.getProductId(), request.getQuantity());
+            log.info("Inventory item initialized for product ID: {}", request.getProductId());
+        }
+
         return result.getId();
+    }
+
+    /**
+     * Initialize inventory for a new product
+     * @param productId the product ID
+     * @param initialQuantity the initial stock quantity
+     * @return the transaction ID
+     */
+
+    public Long initializeProductInventory(Long productId, Long initialQuantity) {
+        log.info("Initializing inventory for product ID: {} with quantity: {}", productId, initialQuantity);
+
+        InventoryTransactionCreationRequest request = new InventoryTransactionCreationRequest();
+        request.setProductId(productId);
+        request.setQuantity(initialQuantity);
+        request.setType(TransactionType.INITIAL_STOCK);
+        request.setReferenceId(productId); // Use product ID as reference for initial stock
+
+        return addInventoryTransaction(request);
     }
 
     /**

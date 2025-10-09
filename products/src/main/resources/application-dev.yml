@@ -2,8 +2,6 @@ spring:
   config:
     activate:
       on-profile: dev
-  devtools:
-    add-properties: true
   datasource:
     url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5431}/postgres
     username: ${DATABASE_USERNAME:postgres}
@@ -11,7 +9,7 @@ spring:
   jpa:
     show-sql: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
   data:
     redis:
       host: 127.0.0.1 # Host of the Redis server
@@ -28,6 +26,9 @@ spring:
   kafka:
     bootstrap-servers: ${KAFKA_SERVER:localhost:29092}
     properties:
+      schema:
+        registry:
+          url: ${SCHEMA_REGISTRY_URL:http://localhost:8079}
       specific:
         avro:
           reader: true

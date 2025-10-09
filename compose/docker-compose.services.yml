@@ -1,0 +1,108 @@
+services:
+#  api-gateway:
+#    container_name: api-gateway
+#    build:
+#      context: ./api-gateway
+#      dockerfile: Dockerfile
+#    ports:
+#      - "4953:4953"
+#    env_file:
+#      - host.local.env
+#    networks:
+#      - default
+
+  authentication:
+    container_name: auth-service
+    build:
+      context: ./authentication
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - host.local.env
+    networks:
+      - micro-kube-network
+
+#  account:
+#    container_name: auth-service
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    env_file:
+#      - host.local.env
+#    networks:
+#      - default
+#
+#  authentication:
+#    container_name: auth-service
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    env_file:
+#      - host.local.env
+#    networks:
+#      - default
+#
+#  account:
+#    container_name: auth-service
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    env_file:
+#      - host.local.env
+#    networks:
+#      - default
+#
+#  authentication:
+#    container_name: auth-service
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    env_file:
+#      - host.local.env
+#    networks:
+#      - default
+#
+#  account:
+#    container_name: auth-service
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    env_file:
+#      - host.local.env
+#    networks:
+#      - default
+#
+#  authentication:
+#    container_name: auth-service
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    env_file:
+#      - host.local.env
+#    networks:
+#      - default
+#
+#  account:
+#    container_name: auth-service
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    env_file:
+#      - host.local.env
+#    networks:
+#      - default

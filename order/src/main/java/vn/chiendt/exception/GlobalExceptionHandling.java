@@ -23,36 +23,6 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class GlobalExceptionHandling {
 
 
-//    @ExceptionHandler(InternalAuthenticationServiceException.class)
-//    @ApiResponses(value = {
-//            @ApiResponse(responseCode = "401", description = "Unauthorized",
-//                    content = {@Content(mediaType = APPLICATION_JSON_VALUE,
-//                            examples = @ExampleObject(
-//                                    name = "401 Response",
-//                                    summary = "Handle exception when resource not found",
-//                                    value = """
-//                                            {
-//                                              "timestamp": "2023-10-19T06:07:35.321+00:00",
-//                                              "status": 401,
-//                                              "path": "/api/v1/...",
-//                                              "error": "Unauthorized",
-//                                              "message": "Username or password is incorrect"
-//                                            }
-//                                            """
-//                            ))})
-//    })
-//    public ErrorResponse handleInternalAuthenticationServiceException(InternalAuthenticationServiceException e, WebRequest request) {
-//        ErrorResponse errorResponse = new ErrorResponse();
-//        errorResponse.setTimestamp(new Date());
-//        errorResponse.setPath(request.getDescription(false).replace("uri=", ""));
-//        errorResponse.setStatus(UNAUTHORIZED.value());
-//        errorResponse.setError(UNAUTHORIZED.getReasonPhrase());
-//        errorResponse.setMessage("Username or password is incorrect");
-//
-//        return errorResponse;
-//    }
-//
-//
     /**
      * Handle exception when the request not found data
      *

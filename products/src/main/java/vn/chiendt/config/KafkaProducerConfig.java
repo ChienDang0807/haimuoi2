@@ -1,8 +1,6 @@
 package vn.chiendt.config;
 
-import com.example.avro.ProductEvent;
-import io.confluent.kafka.schemaregistry.client.MockSchemaRegistryClient;
-import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
+import vn.chiendt.avro.ProductEvent;
 import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +31,9 @@ public class KafkaProducerConfig {
     @Value("${spring.profiles.active}")
     private String profile;
 
+    @Value("${spring.kafka.properties.schema.registry.url}")
+    private String schemaRegistryUrl;
+
     @Bean
     public ProducerFactory<String, ProductEvent> producerFactory() {
         log.info("Creating producer factory");
@@ -45,8 +46,8 @@ public class KafkaProducerConfig {
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
+        props.put("schema.registry.url", schemaRegistryUrl);
 
-        props.put("schema.registry.url", "mock://localhost");
 
         if (profile.equals("prod")) {
             props.put("security.protocol", "SSL");
@@ -68,8 +69,4 @@ public class KafkaProducerConfig {
         return new NewTopic(productSyncEvents, 3, (short) 1);
     }
 
-    @Bean
-    public SchemaRegistryClient schemaRegistryClient() {
-        return new MockSchemaRegistryClient();
-    }
 }

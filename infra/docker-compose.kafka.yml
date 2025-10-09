@@ -1,0 +1,64 @@
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - '22181:2181'
+    networks:
+      - micro-kube-network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.0
+    container_name: kafka
+    restart: unless-stopped
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - '29092:29092'
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_PROCESS_ROLES: ""
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CONTROLLER_QUORUM_VOTERS: ""
+      KAFKA_CONTROLLER_LISTENER_NAMES: ""
+    networks:
+      - micro-kube-network
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:5.4.0
+    hostname: schema-registry
+    container_name: schema-registry
+    depends_on:
+      - zookeeper
+      - kafka
+    ports:
+      - "8079:8079"
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka:9092
+      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8079
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: "zookeeper:2181"
+    networks:
+      - micro-kube-network
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: ms-kafka-ui
+    ports:
+      - "9191:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092  # Internal service communication
+    depends_on:
+      - kafka
+    networks:
+      - micro-kube-network

@@ -4,6 +4,8 @@ spring:
       on-profile: dev
   devtools:
     add-properties: true
+    restart:
+      enabled: false
   datasource:
     url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5431}/postgres
     username: ${DATABASE_USERNAME:postgres}
@@ -14,6 +16,32 @@ spring:
       ddl-auto: create
   kafka:
     bootstrap-servers: ${KAFKA_SERVER:localhost:29092}
+    properties:
+      schema:
+        registry:
+          url: ${SCHEMA_REGISTRY_URL:http://localhost:8079}
+      specific:
+        avro:
+          reader: true
+    listener:
+      # Cấu hình cho Dead Letter Topics
+      missing-topics-fatal: false
+      ack-mode: manual_immediate
+    consumer:
+      # Cấu hình consumer cho DLT
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      max-poll-records: 1
+      session-timeout-ms: 30000
+      heartbeat-interval-ms: 10000
+    producer:
+      # Cấu hình producer cho DLT
+      acks: all
+      retries: 3
+      enable-idempotence: true
+      max-in-flight-requests-per-connection: 1
+      delivery-timeout-ms: 120000
+      request-timeout-ms: 30000
 
 openapi:
   service:

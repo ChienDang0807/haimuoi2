@@ -1,0 +1,1 @@
+docker compose  -f compose/docker-compose.base.yml -f infra/docker-compose.kafka.yml -f infra/docker-compose.db.yml -f infra/docker-compose.els.yml --profile kafka up -d

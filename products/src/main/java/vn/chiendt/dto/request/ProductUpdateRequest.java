@@ -20,7 +20,6 @@ public class ProductUpdateRequest implements Serializable {
     @Size(max = 255, message = "Product name must not exceed 255 characters.")
     private String name;
 
-    @NotBlank(message = "Slug cannot be blank.")
     @Size(max = 255, message = "Slug must not exceed 255 characters.")
     private String slug;
 

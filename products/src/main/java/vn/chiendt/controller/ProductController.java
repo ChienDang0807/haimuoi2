@@ -35,7 +35,7 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    public ApiResponse getProductDetail(@PathVariable(required = false) long productId) {
+    public ApiResponse getProductDetail(@PathVariable(required = false) Long productId) {
         log.info("Get product detail, id={}", productId);
 
         return ApiResponse.builder()

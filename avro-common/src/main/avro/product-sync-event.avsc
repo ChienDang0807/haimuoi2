@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "ProductEvent",
-  "namespace": "com.example.avro",
+  "namespace": "vn.chiendt.avro",
   "fields": [
     { "name": "eventType", "type": { "type": "enum", "name": "ProductEventType", "symbols": ["CREATED", "UPDATED", "DELETED"] } },
     { "name": "id", "type": "long" },

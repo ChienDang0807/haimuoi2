@@ -1,0 +1,10 @@
+networks:
+  micro-kube-network:
+    driver: bridge
+
+volumes:
+  postgres:
+  mongo:
+  grafana:
+  esdata:
+  kafka_data:

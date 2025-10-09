@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgresql
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+      - ./initdb.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - '5431:5432'
+    networks:
+      - micro-kube-network
+
+  mongo:
+    image: mongo:6-jammy
+    container_name: mongodb
+    ports:
+      - "27010:27017"
+    environment:
+      MONGO_INITDB_DATABASE: haimuoi2-monggo
+    volumes:
+      - mongo:/data/mongo
+    networks:
+      - micro-kube-network
+
+  redis:
+    image: redis:7.4.5
+    container_name: redis
+    hostname: redis
+    ports:
+      - '6319:6379'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB;FLUSHALL
+    networks:
+      - micro-kube-network
+
+networks:
+  micro-kube-network:
+    external: true
+

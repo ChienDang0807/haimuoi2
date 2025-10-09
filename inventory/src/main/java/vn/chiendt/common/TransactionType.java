@@ -7,5 +7,7 @@ public enum TransactionType {
     @JsonProperty("in")
     IN,
     @JsonProperty("out")
-    OUT
+    OUT,
+    @JsonProperty("initial_stock")
+    INITIAL_STOCK
 }

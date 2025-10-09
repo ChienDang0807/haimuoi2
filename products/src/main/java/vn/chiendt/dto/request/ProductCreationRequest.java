@@ -27,7 +27,6 @@ public class ProductCreationRequest implements Serializable {
 
     private Long userId;
 
-    @NotBlank(message = "Slug is required")
     @Size(max = 255, message = "Slug cannot exceed 255 characters")
     private String slug;
 

@@ -1,25 +1,29 @@
 package vn.chiendt.service.impl;
 
 
-import com.example.avro.ProductEvent;
-import com.example.avro.ProductEventType;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
+
+import com.github.slugify.Slugify;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import vn.chiendt.avro.ProductEvent;
+import vn.chiendt.avro.ProductEventType;
 import vn.chiendt.cache.redisson.annotation.DistributedLock;
 import vn.chiendt.cache.redisson.service.RedissonCacheService;
 import vn.chiendt.common.ProductStatus;
 import vn.chiendt.dto.request.ProductCreationRequest;
 import vn.chiendt.dto.request.ProductUpdateRequest;
 import vn.chiendt.dto.response.ProductResponse;
+import vn.chiendt.exception.InvalidDataException;
 import vn.chiendt.mapper.ProductMapper;
 import vn.chiendt.model.Product;
 import vn.chiendt.model.ProductDocument;
@@ -45,6 +49,7 @@ public class ProductServiceImpl implements ProductService {
     private final KafkaTemplate<String, ProductEvent> kafkaTemplate;
     private final ProductMapper productMapper;
 
+
     @Value("${kafka.topic}")
     private String productSyncEvents;
 
@@ -58,6 +63,7 @@ public class ProductServiceImpl implements ProductService {
     @Transactional(rollbackFor = Exception.class)
     @DistributedLock(key = "'product:add:' + #request.name", waitTime = 5000, leaseTime = 10000)
     public ProductResponse addProduct(ProductCreationRequest request) throws JsonProcessingException {
+
         log.info("Add product {}", request);
 
         // Check if product with same name already exists
@@ -68,9 +74,10 @@ public class ProductServiceImpl implements ProductService {
         }
 
 
+
         // save to RDMS
         Product product = new Product();
-        product.setSlug(request.getSlug());
+        product.setUserId(request.getUserId());
         product.setName(request.getName());
         product.setStatus(ProductStatus.ACTIVE);
         product.setDescription(request.getDescription());
@@ -80,16 +87,22 @@ public class ProductServiceImpl implements ProductService {
             product.setAttributes(request.getAttributes());
         }
 
-        Product result = productRepository.save(product);
+        Product productWithoutSlug = productRepository.save(product);
+        log.info("Add product to DBMS {}", productWithoutSlug);
 
+        // create slug for product
+        Slugify slugify = new Slugify();
+        String slug = slugify.slugify(productWithoutSlug.getName());
+        productWithoutSlug.setSlug(Boolean.TRUE.equals(productRepository.existsBySlug(slug)) ?  productWithoutSlug.getSlug() : slug);
 
+        Product result = productRepository.save(productWithoutSlug);
 
         //sync elastic search
         ProductEvent productEvent = ProductEvent.newBuilder()
                 .setEventType(ProductEventType.CREATED)
                 .setId(result.getId())
                 .setSlug(result.getSlug())
-                .setStatus(com.example.avro.ProductStatus.valueOf(result.getStatus().name()))
+                .setStatus(vn.chiendt.avro.ProductStatus.valueOf(result.getStatus().name()))
                 .setName(result.getName())
                 .setDescription(result.getDescription())
                 .setPrice(toByteBuffer(result.getPrice(), 10, 2))
@@ -121,7 +134,6 @@ public class ProductServiceImpl implements ProductService {
 
         Product product = getProductByProductId(request.getId());
         product.setName(request.getName());
-        product.setSlug(request.getSlug());
         product.setStatus(request.getStatus());
         product.setDescription(request.getDescription());
         product.setPrice(request.getPrice());
@@ -137,8 +149,7 @@ public class ProductServiceImpl implements ProductService {
         ProductEvent productUpdatedEvent = ProductEvent.newBuilder()
                 .setEventType(ProductEventType.UPDATED)
                 .setId(product.getId())
-                .setSlug(product.getSlug())
-                .setStatus(com.example.avro.ProductStatus.valueOf(product.getStatus().name()))
+                .setStatus(vn.chiendt.avro.ProductStatus.valueOf(product.getStatus().name()))
                 .setName(product.getName())
                 .setDescription(product.getDescription())
                 .setPrice(toByteBuffer(product.getPrice(), 10, 2))
@@ -246,15 +257,6 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Product not found"));
     }
 
-    /**
-     * Get Product Document by id
-     *
-     * @param id
-     * @return
-     */
-    private ProductDocument getProductDocumentById(long id) {
-        return productSearchRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Product document not found"));
-    }
     
     /**
      * Clear all search cache entries
