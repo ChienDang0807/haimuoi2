@@ -6,6 +6,8 @@
     <file url="file://$PROJECT_DIR$/authentication/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/avro-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/category/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/image/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/inventory/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mail/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/notification/src/main/java" charset="UTF-8" />

@@ -5,54 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="refactor-cart-service">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_6_2025_5_23_PM_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_6_2025_5_23_PM_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_6_2025_5_23_PM__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_6_2025_5_23_PM__Changes_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/avro-common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compose/docker-compose.base.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compose/docker-compose.services.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infra/docker-compose.db.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infra/docker-compose.els.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infra/docker-compose.kafka.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infra/docker-compose.monitor.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory/DEAD_LETTER_TOPICS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/config/KafkaProducerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/model/InventoryItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/repository/InventoryItemRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/DltMessageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/InventoryItemService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/impl/InventoryItemServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start-all.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start-kafka.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/stop-all.ps1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/category/CATEGORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/category/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/category/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/category/src/main/java/vn/chiendt/config/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/category/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/category/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/category/src/main/resources/banner.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/src/main/java/vn/chiendt/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/common/TransactionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/common/TransactionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/exception/GlobalExceptionHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/exception/GlobalExceptionHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/SubscribleKafkaMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/SubscribleKafkaMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/impl/InventoryTransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/impl/InventoryTransactionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/src/main/resources/banner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/resources/banner.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/exception/GlobalExceptionHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/exception/GlobalExceptionHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/products/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/avro/product-sync-event.avsc" beforeDir="false" afterPath="$PROJECT_DIR$/avro-common/src/main/avro/product-sync-event.avsc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/config/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/config/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/dto/request/ProductCreationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/dto/request/ProductCreationRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/dto/request/ProductUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/dto/request/ProductUpdateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/SubscribleKafkaMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/SubscribleKafkaMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/shop/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/shop/HELP.md" afterDir="false" />
     </list>
     <list id="754ca1b9-c16f-4b3c-bb9a-d1de231172cb" name="restore notification service" comment="restore notification service" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,16 +48,16 @@
         <option value="Enum" />
         <option value="HTML File" />
         <option value="Interface" />
-        <option value="Dockerfile" />
         <option value="Exception" />
         <option value="Class" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="create-cart-service" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -130,98 +99,98 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.APIGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AccountApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.AuthenticationApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CartApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MailApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.NotificationApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.OrderApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PaymentApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ProductApplication.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Docker.docker-compose.yml.elasticsearch: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.kafka-ui: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.kafka: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.kibana: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.mongo: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.postgres: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.redis: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.schema-registry: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.vault: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.infra/docker-compose.kafka.yml.schema-registry: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.infra/docker-compose.kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.account [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.account [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.api-gateway [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.api-gateway [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authentication [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authentication [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.avro-common [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.cart [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.cart [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.cart [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.cart [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.cart-service [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.cart-service [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.haimuoi2 [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.haimuoi2 [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.haimuoi2 [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.inventory [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.inventory [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.products [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.products [compile].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;New/updated database configurations found&quot;,
-    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;Spring Boot.APIGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.CartApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.CartServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.InventoryApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.OrderApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.PaymentApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ProductApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;create-cart-service&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/haimuoi2/scripts&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;D:/haimuoi2/notification/src/main/java/vn/chiendt/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.APIGatewayApplication.executor": "Run",
+    "Application.AccountApplication.executor": "Debug",
+    "Application.AuthenticationApplication.executor": "Run",
+    "Application.CartApplication.executor": "Run",
+    "Application.MailApplication.executor": "Run",
+    "Application.NotificationApplication.executor": "Run",
+    "Application.OrderApplication.executor": "Run",
+    "Application.PaymentApplication.executor": "Run",
+    "Application.ProductApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Docker.docker-compose.yml.elasticsearch: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kafka-ui: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kafka: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kibana: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.mongo: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.postgres: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.redis: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.schema-registry: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.vault: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.infra/docker-compose.kafka.yml.schema-registry: Compose Deployment.executor": "Run",
+    "Docker.infra/docker-compose.kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Maven.account [clean].executor": "Run",
+    "Maven.account [compile].executor": "Run",
+    "Maven.api-gateway [clean].executor": "Run",
+    "Maven.api-gateway [compile].executor": "Run",
+    "Maven.authentication [clean].executor": "Run",
+    "Maven.authentication [compile].executor": "Run",
+    "Maven.avro-common [compile].executor": "Run",
+    "Maven.cart [clean].executor": "Run",
+    "Maven.cart [compile].executor": "Run",
+    "Maven.cart [install].executor": "Run",
+    "Maven.cart [test].executor": "Run",
+    "Maven.cart-service [clean].executor": "Run",
+    "Maven.cart-service [compile].executor": "Run",
+    "Maven.haimuoi2 [clean].executor": "Run",
+    "Maven.haimuoi2 [compile].executor": "Run",
+    "Maven.haimuoi2 [package].executor": "Run",
+    "Maven.inventory [clean].executor": "Run",
+    "Maven.inventory [compile].executor": "Run",
+    "Maven.products [clean].executor": "Run",
+    "Maven.products [compile].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "New/updated database configurations found",
+    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "Spring Boot.APIGatewayApplication.executor": "Run",
+    "Spring Boot.CartApplication.executor": "Run",
+    "Spring Boot.CartServiceApplication.executor": "Run",
+    "Spring Boot.InventoryApplication.executor": "Run",
+    "Spring Boot.OrderApplication.executor": "Run",
+    "Spring Boot.PaymentApplication.executor": "Run",
+    "Spring Boot.ProductApplication.executor": "Run",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/haimuoi2/image/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "D:/haimuoi2/image/src/main/java/vn/chiendt/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\haimuoi2\image\src\main\resources" />
+      <recent name="D:\haimuoi2\category\src\main\resources" />
       <recent name="D:\haimuoi2\scripts" />
       <recent name="D:\haimuoi2\inventory\src" />
       <recent name="D:\haimuoi2\products\src\main\java\vn\chiendt\cache" />
-      <recent name="D:\haimuoi2\api-gateway\src\main\java\vn\chiendt\response" />
-      <recent name="D:\haimuoi2\api-gateway\src\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\haimuoi2\inventory\src\main" />
@@ -321,6 +290,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CategoryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="category" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.CategoryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="InventoryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="inventory" />
@@ -395,6 +371,45 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="docker-compose.yml.kafka-ui: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="kafka-ui" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.kibana: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="kibana" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.postgres: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="postgres" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="docker-compose.yml.redis: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -408,52 +423,14 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml.schema-registry: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="schema-registry" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="infra/docker-compose.kafka.yml.schema-registry: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="schema-registry" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="infra/docker-compose.kafka.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="infra/docker-compose.kafka.yml.zookeeper: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="zookeeper" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="infra/docker-compose.kafka.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Application.PaymentApplication" />
-      <item itemvalue="Docker.infra/docker-compose.kafka.yml.schema-registry: Compose Deployment" />
-      <item itemvalue="Docker.infra/docker-compose.kafka.yml.zookeeper: Compose Deployment" />
-      <item itemvalue="Docker.docker-compose.yml.schema-registry: Compose Deployment" />
-      <item itemvalue="Docker.docker-compose.yml.redis: Compose Deployment" />
       <item itemvalue="Docker.docker-compose.yml.elasticsearch: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.kafka-ui: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.kibana: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.redis: Compose Deployment" />
+      <item itemvalue="Spring Boot.CategoryApplication" />
       <item itemvalue="Spring Boot.APIGatewayApplication" />
       <item itemvalue="Spring Boot.AccountApplication" />
       <item itemvalue="Spring Boot.AuthenticationApplication" />
@@ -468,11 +445,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.infra/docker-compose.kafka.yml.zookeeper: Compose Deployment" />
-        <item itemvalue="Docker.infra/docker-compose.kafka.yml.schema-registry: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.schema-registry: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.elasticsearch: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.redis: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.kibana: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.kafka-ui: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -536,6 +513,8 @@
       <workItem from="1759904717251" duration="16567000" />
       <workItem from="1759977868936" duration="2899000" />
       <workItem from="1759981524271" duration="494000" />
+      <workItem from="1759993100009" duration="9000" />
+      <workItem from="1759993122921" duration="7313000" />
     </task>
     <task id="LOCAL-00001" summary="init-project">
       <option name="closed" value="true" />
@@ -726,6 +705,22 @@
     <MESSAGE value="define-service" />
     <MESSAGE value="refactor-cart-service" />
     <option name="LAST_COMMIT_MESSAGE" value="refactor-cart-service" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/category/src/main/java/vn/chiendt/CategoryApplication.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/image/src/main/java/vn/chiendt/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,0 +1,22 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    name: account-service
+  profiles:
+    active: @spring.profiles.active@
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    org.springframework.vault: DEBUG
+    org.springframework.cloud.vault: DEBUG
+    org.springframework.cloud.vault.config: DEBUG
+    org.springframework.cloud.vault.config.client: DEBUG
+    org.springframework.cloud.vault.config.client.VaultConfigClient: DEBUG

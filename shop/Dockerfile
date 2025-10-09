@@ -6,4 +6,4 @@ COPY ${JAR_FILE} shop-service.jar
 
 ENTRYPOINT ["java", "-jar", "shop-service.jar"]
 
-EXPOSE 8091
+EXPOSE 8089

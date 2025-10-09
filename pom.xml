@@ -28,6 +28,8 @@
         <module>notification</module>
         <module>shop</module>
         <module>cart</module>
+        <module>category</module>
+        <module>image</module>
     </modules>
 
     <properties>
@@ -38,6 +40,9 @@
         <lombok.version>1.18.36</lombok.version>
         <protoc.version>3.21.12</protoc.version>
         <grpc.version>1.68.0</grpc.version>
+        <mapstruct.verion>1.5.5.Final</mapstruct.verion>
+        <mapstruct-lombok-binding>0.2.0</mapstruct-lombok-binding>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
     </properties>
 
     <profiles>
@@ -117,14 +122,26 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
+                    <source>${java.version}</source> <!-- depending on your project -->
+                    <target>${java.version}</target> <!-- depending on your project -->
                     <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.verion}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>${mapstruct-lombok-binding}</version>
+                        </path>
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
-                        </path>
+                        </path><!-- other annotation processors -->
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
