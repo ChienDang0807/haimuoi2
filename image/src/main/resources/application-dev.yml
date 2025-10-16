@@ -11,9 +11,14 @@ spring:
     hibernate:
       ddl-auto: none
 
+minio:
+  endpoint: ${MINIO_ENDPOINT:http://localhost:9000}
+  access-key: ${MINIO_ACCESS_KEY:minioadmin}
+  secret-ket: ${MINIO_SECRET_KEY:minioadmin}
+
 openapi:
   service:
-    api-docs: category-service
+    api-docs: image-service
     server: http://localhost:${server.port}
-    title: Category service
+    title: Image service
     version: 1.0.0

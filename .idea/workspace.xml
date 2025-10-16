@@ -4,24 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="refactor-cart-service">
-      <change afterPath="$PROJECT_DIR$/category/CATEGORY.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/src/main/java/vn/chiendt/config/OpenApiConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/src/main/resources/application-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/src/main/resources/banner.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/src/main/resources/application-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="init-image-service-and-category-service">
+      <change afterPath="$PROJECT_DIR$/docker/infra/docker-compose.minio.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/IMAGE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/config/MinioConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/model/ProductImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/service/MinioService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/src/test/java/vn/chiendt/ProductApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/src/test/java/vn/chiendt/service/ProductServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_6_2025_5_23_PM_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_6_2025_5_23_PM__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/shop/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/shop/HELP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compose/docker-compose.base.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/compose/docker-compose.base.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compose/docker-compose.services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/compose/docker-compose.services.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/image/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/ImageApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/ImageApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/image/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/docker-compose.db.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.db.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/docker-compose.els.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.els.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/docker-compose.kafka.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.kafka.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/docker-compose.monitor.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.monitor.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/products/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/start-all.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/docker/scripts/start-all.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/start-kafka.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker/scripts/start-kafka.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/stop-all.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/docker/scripts/stop-all.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/shop/SHOP.md" afterDir="false" />
     </list>
     <list id="754ca1b9-c16f-4b3c-bb9a-d1de231172cb" name="restore notification service" comment="restore notification service" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,8 +57,8 @@
         <option value="HTML File" />
         <option value="Interface" />
         <option value="Exception" />
-        <option value="Class" />
         <option value="Dockerfile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -124,6 +132,10 @@
     "Docker.docker-compose.yml.zookeeper: Compose Deployment.executor": "Run",
     "Docker.infra/docker-compose.kafka.yml.schema-registry: Compose Deployment.executor": "Run",
     "Docker.infra/docker-compose.kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.infra/docker-compose.minio.yml.minio: Compose Deployment.executor": "Run",
+    "JUnit.ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent.executor": "Run",
+    "JUnit.ProductServiceTest.addProduct_shouldThrowException_whenProductExistsInCache.executor": "Run",
+    "JUnit.ProductServiceTest.executor": "Run",
     "Maven.account [clean].executor": "Run",
     "Maven.account [compile].executor": "Run",
     "Maven.api-gateway [clean].executor": "Run",
@@ -193,13 +205,14 @@
       <recent name="D:\haimuoi2\products\src\main\java\vn\chiendt\cache" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\haimuoi2\products\src\test\java\vn\chiendt\service" />
+      <recent name="D:\haimuoi2\docker" />
       <recent name="D:\haimuoi2\inventory\src\main" />
       <recent name="D:\haimuoi2\cart" />
       <recent name="D:\haimuoi2\account\src\main\java\vn\chiendt" />
-      <recent name="D:\haimuoi2\payment" />
-      <recent name="D:\haimuoi2\order" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="vn.chiendt" />
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -240,7 +253,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ProductApplication">
+  <component name="RunManager" selected="JUnit.ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent">
     <configuration name="PaymentApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="STRIPE_PUBLISHABLE_KEY" value="pk_test_51RgdzuKbhtqlylb8P180zqt0t3srdjFNXpXor3sFX9i4DngNvh9yW9qbV8t0Nvf6JpapxC07xDfHvE05ddd0L3k90077C2F8Tb" />
@@ -255,6 +268,53 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vn.chiendt.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="vn.chiendt.service" />
+      <option name="MAIN_CLASS_NAME" value="vn.chiendt.service.ProductServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vn.chiendt.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="vn.chiendt.service" />
+      <option name="MAIN_CLASS_NAME" value="vn.chiendt.service.ProductServiceTest" />
+      <option name="METHOD_NAME" value="addProduct_shouldSaveProductAndSendKafkaEvent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceTest.addProduct_shouldThrowException_whenProductExistsInCache" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vn.chiendt.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="vn.chiendt.service" />
+      <option name="MAIN_CLASS_NAME" value="vn.chiendt.service.ProductServiceTest" />
+      <option name="METHOD_NAME" value="addProduct_shouldThrowException_whenProductExistsInCache" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -293,6 +353,13 @@
     <configuration name="CategoryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="category" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.CategoryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="image" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.chiendt.ImageApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -371,66 +438,28 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml.kafka-ui: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="infra/docker-compose.minio.yml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="kafka-ui" />
+              <option value="minio" />
             </list>
           </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml.kibana: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="kibana" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml.postgres: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="postgres" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml.redis: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="redis" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
+          <option name="sourceFilePath" value="docker/infra/docker-compose.minio.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.PaymentApplication" />
+      <item itemvalue="Docker.infra/docker-compose.minio.yml.minio: Compose Deployment" />
       <item itemvalue="Docker.docker-compose.yml.elasticsearch: Compose Deployment" />
-      <item itemvalue="Docker.docker-compose.yml.kafka-ui: Compose Deployment" />
-      <item itemvalue="Docker.docker-compose.yml.kibana: Compose Deployment" />
-      <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
-      <item itemvalue="Docker.docker-compose.yml.redis: Compose Deployment" />
+      <item itemvalue="JUnit.ProductServiceTest" />
+      <item itemvalue="JUnit.ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent" />
+      <item itemvalue="JUnit.ProductServiceTest.addProduct_shouldThrowException_whenProductExistsInCache" />
       <item itemvalue="Spring Boot.CategoryApplication" />
+      <item itemvalue="Spring Boot.ImageApplication" />
       <item itemvalue="Spring Boot.APIGatewayApplication" />
       <item itemvalue="Spring Boot.AccountApplication" />
       <item itemvalue="Spring Boot.AuthenticationApplication" />
@@ -445,11 +474,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent" />
+        <item itemvalue="JUnit.ProductServiceTest" />
+        <item itemvalue="JUnit.ProductServiceTest.addProduct_shouldThrowException_whenProductExistsInCache" />
+        <item itemvalue="Docker.infra/docker-compose.minio.yml.minio: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.elasticsearch: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.redis: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.kibana: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.kafka-ui: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -514,7 +543,12 @@
       <workItem from="1759977868936" duration="2899000" />
       <workItem from="1759981524271" duration="494000" />
       <workItem from="1759993100009" duration="9000" />
-      <workItem from="1759993122921" duration="7313000" />
+      <workItem from="1759993122921" duration="10169000" />
+      <workItem from="1760005591623" duration="2542000" />
+      <workItem from="1760019756243" duration="167000" />
+      <workItem from="1760337947120" duration="3048000" />
+      <workItem from="1760422950073" duration="4861000" />
+      <workItem from="1760584797113" duration="1752000" />
     </task>
     <task id="LOCAL-00001" summary="init-project">
       <option name="closed" value="true" />
@@ -636,7 +670,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759472198214</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="init-image-service-and-category-service">
+      <option name="closed" value="true" />
+      <created>1760001175703</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1760001175703</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -704,7 +746,8 @@
     <MESSAGE value="init-cart-service" />
     <MESSAGE value="define-service" />
     <MESSAGE value="refactor-cart-service" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor-cart-service" />
+    <MESSAGE value="init-image-service-and-category-service" />
+    <option name="LAST_COMMIT_MESSAGE" value="init-image-service-and-category-service" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -713,11 +756,6 @@
           <url>file://$PROJECT_DIR$/category/src/main/java/vn/chiendt/CategoryApplication.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/image/src/main/java/vn/chiendt/Main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

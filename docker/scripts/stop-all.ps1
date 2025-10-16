@@ -1,0 +1,1 @@
+docker compose  -f docker/compose/docker-compose.base.yml -f docker/infra/docker-compose.kafka.yml -f docker/infra/docker-compose.db.yml -f docker/infra/docker-compose.els.yml --profile kafka down

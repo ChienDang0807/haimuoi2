@@ -72,9 +72,6 @@ public class ProductServiceImpl implements ProductService {
             log.warn("Product with name {} already exists", request.getName());
             throw new IllegalArgumentException("Product with this name already exists");
         }
-
-
-
         // save to RDMS
         Product product = new Product();
         product.setUserId(request.getUserId());

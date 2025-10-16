@@ -8,3 +8,4 @@ volumes:
   grafana:
   esdata:
   kafka_data:
+  minio:
