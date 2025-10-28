@@ -14,7 +14,9 @@ spring:
       ddl-auto: none
   kafka:
     bootstrap-servers: ${KAFKA_SERVER:localhost:29092}
-    topic: send-email-register-topic
+    consumer:
+      topic-name-send-email-register-topic: send-email-register-topic
+      topic-name-send-email-remind-pay-installment: semd-email-remind-pay-installment
   sendgrid:
     api-key: ${SENDGRID_KEY}
     template-id: ${SENDGRID_TEMPLATE}

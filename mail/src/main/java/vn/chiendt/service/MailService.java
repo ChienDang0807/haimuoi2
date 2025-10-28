@@ -32,6 +32,8 @@ public class MailService {
     @Value("${spring.sendgrid.template-id}")
     private String templateId;
 
+
+
     public String sendEmail(String toEmail, String subject, String body) {
         Email from = new Email("chien.haui0807@gmail.com", "Chien Dang"); // Email của bạn
         Email to = new Email(toEmail);
@@ -61,7 +63,7 @@ public class MailService {
 
     @KafkaListener(topics = "send-email-register-topic", groupId = "send-email-register-group")
     public void sendConfirmEmail (String message) throws IOException {
-        log.info("Send email confirm : {}", message);
+        log.info("Send email confirm user: {}", message);
 
         MessageDTO messageDTO = new Gson().fromJson(message, MessageDTO.class);
         Email from = new Email("chien.haui0807@gmail.com", "ChienDang ");
@@ -99,6 +101,10 @@ public class MailService {
         }
     }
 
+    @KafkaListener(topics ="${spring.kafka.consumer.topic-name-send-email-remind-pay-installment}" ,groupId = "send-email-notify-customer")
+    public void send (String message) throws IOException {
+        // handle send email pay installment
+    }
     @Getter
     @Setter
     private static class MessageDTO{
