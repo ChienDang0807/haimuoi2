@@ -2,6 +2,8 @@ package vn.chiendt.dto.request;
 
 import jakarta.validation.ValidationException;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.util.StringUtils;
 import vn.chiendt.common.Currency;
 import vn.chiendt.common.Operation;
@@ -12,6 +14,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@Getter
+@Setter
 public class AdvanceSearchRequest {
 
     @NotNull(message = "searchFields must be not blank")

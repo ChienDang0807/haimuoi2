@@ -15,6 +15,7 @@ import vn.chiendt.dto.response.TransactionResponse;
 import vn.chiendt.exception.ResourceNotFoundException;
 import vn.chiendt.model.Transaction;
 import vn.chiendt.repository.TransactionRepository;
+import vn.chiendt.repository.criteriasearch.AdvanceSearchRepository;
 import vn.chiendt.service.TransactionService;
 
 import java.util.List;
@@ -27,6 +28,7 @@ import java.util.regex.Pattern;
 public class TransactionServiceImpl implements TransactionService {
 
     private final TransactionRepository transactionRepository;
+    private final AdvanceSearchRepository advanceSearchRepository;
 
     @Override
     public PageResponse getAllTransactions(String keyword, String sort, int page, int size) {
@@ -69,8 +71,10 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public PageResponse advanceSearch(AdvanceSearchRequest request) {
-        return null;
+    public PageResponse<?> advanceSearch(AdvanceSearchRequest request) {
+        log.info("advanceSearch called");
+        request.validate();
+        return advanceSearchRepository.advanceSearch(request);
     }
 
     @Override

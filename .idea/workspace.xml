@@ -4,32 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="init-image-service-and-category-service">
-      <change afterPath="$PROJECT_DIR$/docker/infra/docker-compose.minio.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/IMAGE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/config/MinioConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/model/ProductImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/service/MinioService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/src/test/java/vn/chiendt/ProductApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/src/test/java/vn/chiendt/service/ProductServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_6_2025_5_23_PM_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_6_2025_5_23_PM__Changes_1.xml" beforeDir="false" />
+    <list default="true" id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="change-mail-service">
+      <change afterPath="$PROJECT_DIR$/payment/src/main/java/vn/chiendt/repository/criteriasearch/AdvanceSearchRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/src/main/java/vn/chiendt/repository/criteriasearch/SearchCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/src/main/java/vn/chiendt/repository/criteriasearch/SearchQueryCriteriaConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compose/docker-compose.base.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/compose/docker-compose.base.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compose/docker-compose.services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/compose/docker-compose.services.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/image/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/ImageApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/ImageApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/image/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/docker-compose.db.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.db.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/docker-compose.els.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.els.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/docker-compose.kafka.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.kafka.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/docker-compose.monitor.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.monitor.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/products/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/start-all.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/docker/scripts/start-all.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/start-kafka.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker/scripts/start-kafka.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/stop-all.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/docker/scripts/stop-all.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/shop/SHOP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/src/main/java/vn/chiendt/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/vn/chiendt/controller/PaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/src/main/java/vn/chiendt/dto/request/AdvanceSearchRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/vn/chiendt/dto/request/AdvanceSearchRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/src/main/java/vn/chiendt/service/impl/TransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/vn/chiendt/service/impl/TransactionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop/pom.xml" afterDir="false" />
     </list>
     <list id="754ca1b9-c16f-4b3c-bb9a-d1de231172cb" name="restore notification service" comment="restore notification service" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +63,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ChienDang0807/haimuoi2.git&quot;,
-    &quot;accountId&quot;: &quot;32fb9ae4-21f4-41ea-b799-d24d86876ac6&quot;
+    &quot;accountId&quot;: &quot;afadfd19-a6c1-43d3-8c63-3af47df8e60c&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -96,7 +80,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -107,92 +91,92 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.APIGatewayApplication.executor": "Run",
-    "Application.AccountApplication.executor": "Debug",
-    "Application.AuthenticationApplication.executor": "Run",
-    "Application.CartApplication.executor": "Run",
-    "Application.MailApplication.executor": "Run",
-    "Application.NotificationApplication.executor": "Run",
-    "Application.OrderApplication.executor": "Run",
-    "Application.PaymentApplication.executor": "Run",
-    "Application.ProductApplication.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Docker.docker-compose.yml.elasticsearch: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.kafka-ui: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.kafka: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.kibana: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.mongo: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.postgres: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.redis: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.schema-registry: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.vault: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.zookeeper: Compose Deployment.executor": "Run",
-    "Docker.infra/docker-compose.kafka.yml.schema-registry: Compose Deployment.executor": "Run",
-    "Docker.infra/docker-compose.kafka.yml.zookeeper: Compose Deployment.executor": "Run",
-    "Docker.infra/docker-compose.minio.yml.minio: Compose Deployment.executor": "Run",
-    "JUnit.ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent.executor": "Run",
-    "JUnit.ProductServiceTest.addProduct_shouldThrowException_whenProductExistsInCache.executor": "Run",
-    "JUnit.ProductServiceTest.executor": "Run",
-    "Maven.account [clean].executor": "Run",
-    "Maven.account [compile].executor": "Run",
-    "Maven.api-gateway [clean].executor": "Run",
-    "Maven.api-gateway [compile].executor": "Run",
-    "Maven.authentication [clean].executor": "Run",
-    "Maven.authentication [compile].executor": "Run",
-    "Maven.avro-common [compile].executor": "Run",
-    "Maven.cart [clean].executor": "Run",
-    "Maven.cart [compile].executor": "Run",
-    "Maven.cart [install].executor": "Run",
-    "Maven.cart [test].executor": "Run",
-    "Maven.cart-service [clean].executor": "Run",
-    "Maven.cart-service [compile].executor": "Run",
-    "Maven.haimuoi2 [clean].executor": "Run",
-    "Maven.haimuoi2 [compile].executor": "Run",
-    "Maven.haimuoi2 [package].executor": "Run",
-    "Maven.inventory [clean].executor": "Run",
-    "Maven.inventory [compile].executor": "Run",
-    "Maven.products [clean].executor": "Run",
-    "Maven.products [compile].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "New/updated database configurations found",
-    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "Spring Boot.APIGatewayApplication.executor": "Run",
-    "Spring Boot.CartApplication.executor": "Run",
-    "Spring Boot.CartServiceApplication.executor": "Run",
-    "Spring Boot.InventoryApplication.executor": "Run",
-    "Spring Boot.OrderApplication.executor": "Run",
-    "Spring Boot.PaymentApplication.executor": "Run",
-    "Spring Boot.ProductApplication.executor": "Run",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/haimuoi2/image/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "D:/haimuoi2/image/src/main/java/vn/chiendt/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.APIGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AccountApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.AuthenticationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CartApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MailApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.NotificationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.OrderApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PaymentApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductApplication.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Docker.docker-compose.yml.elasticsearch: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.kafka-ui: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.kafka: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.kibana: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.mongo: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.postgres: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.redis: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.schema-registry: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.vault: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.infra/docker-compose.kafka.yml.schema-registry: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.infra/docker-compose.kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.infra/docker-compose.minio.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.addProduct_shouldThrowException_whenProductExistsInCache.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.account [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.account [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.api-gateway [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.api-gateway [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authentication [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authentication [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.avro-common [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart-service [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.haimuoi2 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.haimuoi2 [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.haimuoi2 [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.inventory [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.inventory [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.products [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.products [compile].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;New/updated database configurations found&quot;,
+    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;Spring Boot.APIGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CartApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CartServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.InventoryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.OrderApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.PaymentApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ProductApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/haimuoi2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/haimuoi2/image/src/main/java/vn/chiendt/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -482,14 +466,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
-        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="StructureViewState">
     <option name="selectedTab" value="Logical" />
@@ -549,6 +525,9 @@
       <workItem from="1760337947120" duration="3048000" />
       <workItem from="1760422950073" duration="4861000" />
       <workItem from="1760584797113" duration="1752000" />
+      <workItem from="1761633441798" duration="5530000" />
+      <workItem from="1761643242168" duration="3380000" />
+      <workItem from="1761718945777" duration="4489000" />
     </task>
     <task id="LOCAL-00001" summary="init-project">
       <option name="closed" value="true" />
@@ -678,7 +657,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760001175703</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="change-mail-service">
+      <option name="closed" value="true" />
+      <created>1761646840757</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1761646840758</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -747,7 +734,8 @@
     <MESSAGE value="define-service" />
     <MESSAGE value="refactor-cart-service" />
     <MESSAGE value="init-image-service-and-category-service" />
-    <option name="LAST_COMMIT_MESSAGE" value="init-image-service-and-category-service" />
+    <MESSAGE value="change-mail-service" />
+    <option name="LAST_COMMIT_MESSAGE" value="change-mail-service" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
