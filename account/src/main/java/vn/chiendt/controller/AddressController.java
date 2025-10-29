@@ -5,9 +5,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.chiendt.dto.response.ApiResponse;
+import vn.chiendt.model.Address;
 import vn.chiendt.service.AddressService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/address")
@@ -20,26 +24,18 @@ public class AddressController {
 
     @Operation(summary = "Get all addresses by user id", description = "Get all addresses by user id")
     @GetMapping("/list/{userId}")
-    public ApiResponse getListAddress(@PathVariable Long userId) {
+    public ResponseEntity<List<Address>> getListAddress(@PathVariable Long userId) {
         log.info("Get address list");
 
-        return ApiResponse.builder()
-                .status(HttpStatus.OK.value())
-                .message("Get all address by user id")
-                .data(addressService.findAllAddressByUserId(userId))
-                .build();
+        return ResponseEntity.ok(addressService.findAllAddressByUserId(userId));
     }
 
     @Operation(summary = "Get address by id", description = "Get address by id")
     @GetMapping("/{addressId}")
-    public ApiResponse getAddressDetail(@PathVariable Long addressId) {
+    public ResponseEntity<Address> getAddressDetail(@PathVariable Long addressId) {
         log.info("Get address ");
 
-        return ApiResponse.builder()
-                .status(HttpStatus.OK.value())
-                .message("Get address by id")
-                .data(addressService.findAddressById(addressId))
-                .build();
+        return ResponseEntity.ok(addressService.findAddressById(addressId));
     }
 
 }
