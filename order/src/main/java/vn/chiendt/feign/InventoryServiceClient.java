@@ -13,8 +13,8 @@ import vn.chiendt.dto.response.ApiResponse;
 public interface InventoryServiceClient {
 
     @PostMapping("/create")
-    public ApiResponse createSaleOrder(@Valid @RequestBody SaleOrderCreationRequest request) ;
+    ApiResponse createSaleOrder(@Valid @RequestBody SaleOrderCreationRequest request) ;
 
     @PatchMapping("/cancel/{id}")
-    public ApiResponse cancelSaleOrder(@PathVariable String id) ;
+    ApiResponse cancelSaleOrder(@PathVariable String id) ;
 }

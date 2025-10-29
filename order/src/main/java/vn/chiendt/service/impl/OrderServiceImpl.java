@@ -52,6 +52,7 @@ public class OrderServiceImpl implements OrderService {
         return getOrderById(orderId);
     }
 
+    // createOrder thi chua can thong tin thanh toan
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED)
     public Order createOrder(PlaceOrderRequest request) {
@@ -64,9 +65,9 @@ public class OrderServiceImpl implements OrderService {
         order.setCustomerId(request.getCustomerId());
         order.setAmount(request.getAmount());
         order.setCurrency(request.getCurrency());
-        order.setPaymentMethod(request.getPaymentMethod());
         order.setStatus(OrderStatus.NEW.getValue());
         order.setStatusName(OrderStatus.NEW.name());
+
         order.setCreatedAt(new Date());
 
         List<OrderItem> orderItems = request.getOrderItems().stream().map(

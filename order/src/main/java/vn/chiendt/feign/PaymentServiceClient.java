@@ -14,8 +14,8 @@ import java.util.Map;
 public interface PaymentServiceClient {
 
     @PostMapping("/create-payment-intent")
-    public ResponseEntity<Map<String, String>> createPaymentIntent(@RequestBody PaymentIntentRequest request);
+    ResponseEntity<Map<String, String>> createPaymentIntent(@RequestBody PaymentIntentRequest request);
 
     @PostMapping("/refund/{paymentId}")
-    public ResponseEntity<Map<String, String>> createRefund(@PathVariable String paymentId);
+    ResponseEntity<Map<String, String>> createRefund(@PathVariable String paymentId);
 }

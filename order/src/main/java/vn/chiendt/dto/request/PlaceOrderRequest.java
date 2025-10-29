@@ -23,9 +23,6 @@ public class PlaceOrderRequest implements Serializable {
     @NotNull(message = "currency must be not null")
     private Currency currency;
 
-    @NotNull(message = "paymentMethod must be not null")
-    private PaymentMethod paymentMethod;
-
     @NotEmpty(message = "orderItems must be not empty")
     private List<OrderItemRequest> orderItems;
 

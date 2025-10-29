@@ -15,6 +15,6 @@ public class AddressRequest implements Serializable {
     private String street;
     private String city;
     private String country;
-    private Integer addressType;
+    private String addressType;
 
 }

@@ -19,8 +19,9 @@ stripe:
 
 api:
   internal:
-    paymentUrl: http://localhost:8086
-    saleOrderUrl: http://localhost:8087/sale-order
+    paymentUrl: ${PAYMENT_SERVICE_URL:http://localhost:8086}
+    saleOrderUrl: ${SALE_ORDER_SERVICE:http://localhost:8087/sale-order}
+    accountUrl: ${ACCOUNT_SERVICE_URL:http://localhost:8082}
 
 openapi:
   service:

@@ -19,6 +19,12 @@ public class Address {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "address_type")
+    private String addressName;
+
+    @Column(name = "user_id")
+    private Long userId;
+
     @Column(name = "apartment_number")
     private String apartmentNumber;
 
@@ -40,11 +46,6 @@ public class Address {
     @Column(name = "country")
     private String country;
 
-    @Column(name = "address_type")
-    private Integer addressType;
-
-    @Column(name = "user_id")
-    private Long userId;
 
     @Column(name = "created_at", length = 255)
     @Temporal(TemporalType.TIMESTAMP)
