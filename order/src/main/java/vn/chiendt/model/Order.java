@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import vn.chiendt.common.Currency;
 import vn.chiendt.common.PaymentMethod;
+import vn.chiendt.common.PaymentProvider;
 
 import java.util.Date;
 import java.util.List;
@@ -28,6 +29,8 @@ public class Order {
 
     // @JsonProperty("payment_method")
     private PaymentMethod paymentMethod;
+
+    private PaymentProvider paymentProvider;
 
     private int status;
 

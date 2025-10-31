@@ -20,6 +20,7 @@ import vn.chiendt.exception.ResourceNotFoundException;
 import vn.chiendt.model.Order;
 import vn.chiendt.model.OrderItem;
 import vn.chiendt.repository.OrderRepository;
+import vn.chiendt.security.UserContext;
 import vn.chiendt.service.OrderService;
 
 import java.awt.image.BufferedImage;
@@ -58,11 +59,11 @@ public class OrderServiceImpl implements OrderService {
     public Order createOrder(PlaceOrderRequest request) {
         log.info("Create order");
 
+
         Order order = new Order();
         String orderId = String.valueOf(UUID.randomUUID());
 
         order.setId(orderId);
-        order.setCustomerId(request.getCustomerId());
         order.setAmount(request.getAmount());
         order.setCurrency(request.getCurrency());
         order.setStatus(OrderStatus.NEW.getValue());
