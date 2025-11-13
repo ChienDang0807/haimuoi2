@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import vn.chiendt.common.TransactionStatus;
+import vn.chiendt.common.PaymentProvider;
 import vn.chiendt.service.TransactionService;
 import vn.chiendt.service.WebhookService;
 
@@ -37,20 +38,20 @@ public class WebhookServiceImpl implements WebhookService {
     @Override
     public void handlePaymentIntentCanceled(Event event) {
         log.info("Payment canceled");
-        String paymentId = getPaymentId(event);
-        transactionService.updateTransactionStatus(paymentId, TransactionStatus.CANCELED);
+        String providerPaymentId = getPaymentId(event);
+        transactionService.updateTransactionStatus(PaymentProvider.STRIPE, providerPaymentId, TransactionStatus.CANCELED);
     }
 
     @Override
     public void handlePaymentIntentSucceeded(Event event) {
         log.info("Payment succeeded");
-        String paymentId = getPaymentId(event);
+        String providerPaymentId = getPaymentId(event);
 
         // update status of transaction
-        transactionService.updateTransactionStatus(paymentId, TransactionStatus.SUCCEEDED);
+        transactionService.updateTransactionStatus(PaymentProvider.STRIPE, providerPaymentId, TransactionStatus.SUCCEEDED);
 
         // Synchronize with order-service
-        String orderId = transactionService.getOrderId(paymentId);
+        String orderId = transactionService.getOrderId(PaymentProvider.STRIPE, providerPaymentId);
         Map<String, String> massage = new HashMap<>();
         massage.put("orderId", orderId);
         massage.put("status", "PAID");

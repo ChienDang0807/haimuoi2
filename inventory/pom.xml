@@ -65,6 +65,19 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- Mapstruct-->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.verion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok-mapstruct-binding</artifactId>
+            <version>${mapstruct-lombok-binding}</version>
+        </dependency>
+
         <!-- Avro Common Module -->
         <dependency>
             <groupId>vn.chiendt</groupId>

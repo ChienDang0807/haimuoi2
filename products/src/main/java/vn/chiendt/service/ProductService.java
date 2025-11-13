@@ -11,7 +11,7 @@ import java.util.List;
 public interface ProductService {
     List<ProductDocument> searchProduct(String name);
 
-    ProductDocument getProductDocumentById(Long id);
+    ProductResponse getProductDocumentById(Long id);
 
     ProductResponse addProduct(ProductCreationRequest request) throws JsonProcessingException;
 

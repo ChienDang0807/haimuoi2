@@ -15,7 +15,7 @@ public class InventoryTransactionCreationRequest implements Serializable {
     private Long productId;
 
     @NotNull(message = "quantity must be not null")
-    private Long quantity;
+    private Integer quantity;
 
     @NotNull(message = "type must be not null")
     private TransactionType type;

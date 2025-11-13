@@ -18,6 +18,7 @@ import vn.chiendt.avro.ProductEventType;
 import vn.chiendt.common.Currency;
 import vn.chiendt.common.OrderStatus;
 import vn.chiendt.common.PaymentMethod;
+import vn.chiendt.model.InventoryItem;
 import vn.chiendt.model.SaleOrder;
 import vn.chiendt.model.SaleOrderItem;
 import vn.chiendt.repository.SaleOrderItemRepository;
@@ -37,6 +38,7 @@ public class SubscribleKafkaMessage {
     private final SaleOrderRepository saleOrderRepository;
     private final SaleOrderItemRepository saleOrderItemRepository;
     private final InventoryTransactionServiceImpl inventoryTransactionService;
+    private final InventoryItemService inventoryItemService;
     private final DltMessageService dltMessageService;
 
     @KafkaListener(topics = "update-inventory-topic", groupId = "update-inventory-group", containerFactory = "kafkaListenerContainerFactory")
@@ -87,20 +89,22 @@ public class SubscribleKafkaMessage {
             log.info("Processing product creation event for product ID: {}", event.getId());
             
             try {
-                Long initialQuantity = 0L; // Default initial stock
-                
+                Integer initialQuantity = 0; // Default initial stock
+
+                InventoryItem initInventoryItem = inventoryItemService.initializeInventory(event.getId(),initialQuantity);
+                log.info("Inventory item init for product {}:", initInventoryItem.getId());
+
                 Long transactionId = inventoryTransactionService.initializeProductInventory(
                     event.getId(), 
-                    initialQuantity
+                    initialQuantity,
+                    initInventoryItem.getId()
                 );
                 
-                log.info("Inventory initialized for product ID: {} with transaction ID: {}", 
+                log.info("Inventory transaction initialized for product ID: {} with transaction ID: {}",
                     event.getId(), transactionId);
                     
             } catch (Exception e) {
                 log.error("Failed to initialize inventory for product ID: {}", event.getId(), e);
-                // In a production environment, you might want to send this to a dead letter queue
-                // or implement retry logic
             }
         } else if ( ProductEventType.DELETED == event.getEventType()) {
             log.info("Processing product deletion event for product ID: {}", event.getId());

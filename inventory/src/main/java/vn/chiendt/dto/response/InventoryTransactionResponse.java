@@ -14,7 +14,7 @@ import java.util.Date;
 public class InventoryTransactionResponse implements Serializable {
     private Long id;
     private Long productId;
-    private Long quantity;
+    private Integer quantity;
     private TransactionType type;
     private Long referenceId;
     private Date createdAt;

@@ -235,5 +235,83 @@ Cart Service là một microservice quản lý giỏ hàng trong hệ thống e-
 - ✅ Scalable architecture for future growth
 
 ---
+## Một vài case xử lý
+- Với mỗi sản phẩm nếu cùng Id nhưng khác attributes thì không đc cộng quantity mà phải thành thêm 1 CartItem mới
+- Thay đổi cấu trúc bảng dễ hiểu dễ sử dụng hơn 
+- **Cấu trúc bảng cũ**
+```sql
+-- Bảng cart_item
+CREATE TABLE cart_item (
+    id BIGSERIAL PRIMARY KEY,
+    product_id BIGINT,
+    cart_id VARCHAR(255),
+    cart_token VARCHAR(255),
+    product_name VARCHAR(255),
+    price NUMERIC(19, 2),
+    quantity INTEGER,
+    discount NUMERIC(19, 2),
+    unit VARCHAR(100),
+    shop_id VARCHAR(255),
+    attributes JSONB
+);
+-- Bảng cart
+CREATE TABLE cart (
+    id VARCHAR(255) PRIMARY KEY,
+    user_id BIGINT,
+    cart_state VARCHAR(20) NOT NULL,
+    shipping_fee NUMERIC(19, 2) DEFAULT 30000,
+    discount NUMERIC(19, 2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+- **Cấu trúc bảng mới** 
+```sql
+-- Bảng Cart
+CREATE TABLE tbl_cart (
+    id VARCHAR(255) PRIMARY KEY,
+    user_id BIGINT NULL,           -- NULL cho guest cart
+    cart_token VARCHAR(255) NULL,  -- NULL cho user cart
+    cart_state VARCHAR(20) NOT NULL,
+    shipping_fee DECIMAL(10,2),
+    discount DECIMAL(10,2),
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+);
 
-*Document này sẽ được cập nhật định kỳ dựa trên tiến độ phát triển và feedback từ stakeholders.*
+-- Bảng CartItem
+CREATE TABLE tbl_cart_item (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    cart_identifier VARCHAR(255) NOT NULL,  -- Unified field
+    product_id BIGINT NOT NULL,
+    product_name VARCHAR(255),
+    price DECIMAL(10,2),
+    quantity INTEGER,
+    discount DECIMAL(10,2),
+    unit VARCHAR(50),
+    shop_id VARCHAR(255),
+    attributes JSONB,
+    
+    -- Indexes
+    INDEX idx_cart_identifier (cart_identifier),
+    INDEX idx_cart_type (cart_type),
+    INDEX idx_product_id (product_id)
+);
+```
+- Luồng khi merge giỏ hàng trường hợp người dùng có giỏ hàng rôì:
+  - Cart: Xóa cartToken, cập nhật userId 
+  - CartItem: thay đổi cart_identifier = cartId + nếu sản phẩm đó có trong 
+  giỏ rồi ( tức có cùng productId và attributes) thì cộng quantity nếu chưa thì tạo CartItem mới
+- Luồng khi merge giỏ hàng trường hợp người dùng chưa có giỏ hàng:
+  - Cart: Xóa cartToken, cập nhật userId
+  - CartItem: chỉ lưu vào db
+- Luồng khi thêm sản phẩm vào giỏ hàng 
+  - Nếu chưa đăng nhập: Kiểm tra xem có giỏ chưa nếu chưa thì set cartId và cartToken bằng token trong cookie, userId = 0 các sản phẩm đc thêm vào set cart_identifier = token trong cookie
+    nếu sản phẩm đó có trong giỏ rồi ( tức có cùng productId và attributes) thì cộng quantity nếu chưa thì tạo cart_item mới
+  - Nếu đăng nhập: Khi thêm sản phẩm, cart_identifier = cart_id  nếu sản phẩm đó có trong
+    giỏ rồi ( tức có cùng productId và attributes) thì cộng quantity nếu chưa thì tạo CartItem mới
+- Luồng khi xóa sản phẩm: Xóa theo cart_identifier
+- Luồng lấy sản phẩm: 
+  - Đăng nhập : tức cartToken = null và userId != null lấy tất cả sản phẩm có cartId = cart_indentifier
+  - Chưa đăng nhập: khi cartToken != null và userId = null lấy tất cả sản phẩm 
+  

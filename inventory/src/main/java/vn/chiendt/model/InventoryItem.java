@@ -22,13 +22,13 @@ public class InventoryItem {
     private Long productId;
 
     @Column(name = "available_quantity", nullable = false)
-    private Long availableQuantity = 0L;
+    private Integer availableQuantity = 0;
 
     @Column(name = "reserved_quantity", nullable = false)
-    private Long reservedQuantity = 0L;
+    private Integer reservedQuantity = 0;
 
     @Column(name = "total_quantity", nullable = false)
-    private Long totalQuantity = 0L;
+    private Integer totalQuantity = 0;
 
     @CreationTimestamp
     @Column(name = "created_at")

@@ -41,7 +41,7 @@ public class ProductDocument {
 
     // Nên dùng Map thay vì String để search dễ hơn
     @Field(type = FieldType.Object)
-    private Map<String, Object> attributes;
+    private Map<String, String> attributes;
 
     @Field(type = FieldType.Date, format = DateFormat.date_time)
     private Instant createdAt;

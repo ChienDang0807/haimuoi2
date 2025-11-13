@@ -1,5 +1,6 @@
 package vn.chiendt.service;
 
+import vn.chiendt.dto.response.InventoryItemResponse;
 import vn.chiendt.model.InventoryItem;
 
 public interface InventoryItemService {
@@ -10,14 +11,14 @@ public interface InventoryItemService {
      * @param initialQuantity the initial stock quantity
      * @return the created inventory item
      */
-    InventoryItem initializeInventory(Long productId, Long initialQuantity);
+    InventoryItem initializeInventory(Long productId, Integer initialQuantity);
     
     /**
      * Get inventory item by product ID
      * @param productId the product ID
      * @return the inventory item
      */
-    InventoryItem getInventoryByProductId(Long productId);
+    InventoryItemResponse getInventoryByProductId(Long productId);
     
     /**
      * Update available quantity
@@ -26,7 +27,7 @@ public interface InventoryItemService {
      * @param isAddition true for addition, false for subtraction
      * @return the updated inventory item
      */
-    InventoryItem updateAvailableQuantity(Long productId, Long quantity, boolean isAddition);
+    InventoryItemResponse updateAvailableQuantity(Long productId, Integer quantity, boolean isAddition);
     
     /**
      * Reserve quantity for an order
@@ -34,7 +35,7 @@ public interface InventoryItemService {
      * @param quantity the quantity to reserve
      * @return the updated inventory item
      */
-    InventoryItem reserveQuantity(Long productId, Long quantity);
+    InventoryItemResponse reserveQuantity(Long productId, Integer quantity);
     
     /**
      * Release reserved quantity
@@ -42,5 +43,13 @@ public interface InventoryItemService {
      * @param quantity the quantity to release
      * @return the updated inventory item
      */
-    InventoryItem releaseReservedQuantity(Long productId, Long quantity);
+    InventoryItemResponse releaseReservedQuantity(Long productId, Integer quantity);
+
+    /**
+     * kiem tra ton kho san pham
+     * @param productId the product ID
+     * @param quantity the quantity when customer buy
+     * @return
+     */
+    Boolean isInventoryItemAvailable (Long productId, Integer quantity);
 }
