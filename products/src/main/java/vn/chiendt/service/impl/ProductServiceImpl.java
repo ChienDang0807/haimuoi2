@@ -225,7 +225,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDocument getProductDocumentById(Long id) {
+    public ProductResponse getProductDocumentById(Long id) {
         log.info("Get product by id, id={}", id);
         
         // Check cache first
@@ -233,11 +233,11 @@ public class ProductServiceImpl implements ProductService {
         ProductDocument cachedProduct = redissonCacheService.get(cacheKey);
         if (cachedProduct != null) {
             log.debug("Returning cached product for id: {}", id);
-            return cachedProduct;
+            return productMapper.toProductResponseFromProductDoc(cachedProduct);
         }
         
         // Get from database and cache
-        ProductDocument product = getProductDocumentById(id);
+        ProductResponse product = getProductDocumentById(id);
         redissonCacheService.put(cacheKey, product, CACHE_TTL_MINUTES, TimeUnit.MINUTES);
         log.debug("Cached product for id: {}", id);
         

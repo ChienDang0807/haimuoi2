@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import vn.chiendt.common.TransactionStatus;
+import vn.chiendt.common.PaymentProvider;
 import vn.chiendt.dto.request.AdvanceSearchRequest;
 import vn.chiendt.dto.response.PageResponse;
 import vn.chiendt.dto.response.TransactionResponse;
@@ -104,6 +105,17 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    public String getOrderId(PaymentProvider provider, String providerPaymentId) {
+        log.info("getOrderId by provider called");
+
+        Transaction transaction = transactionRepository
+                .findByPaymentProviderAndProviderPaymentId(provider, providerPaymentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Transaction not found with provider: " + provider + ", providerPaymentId: " + providerPaymentId));
+
+        return transaction.getOrderId();
+    }
+
+    @Override
     public Long createTransaction(Transaction transaction) {
         log.info("createTransaction called");
 
@@ -117,6 +129,18 @@ public class TransactionServiceImpl implements TransactionService {
         log.info("Updating transaction with paymentId {} and status {}", paymentId, status);
 
         Transaction transaction = transactionRepository.findTransactionByPaymentId(paymentId).orElseThrow(()->new ResourceNotFoundException("Transaction not found"));
+        transaction.setStatus(status);
+
+        transactionRepository.save(transaction);
+    }
+
+    @Override
+    public void updateTransactionStatus(PaymentProvider provider, String providerPaymentId, TransactionStatus status) {
+        log.info("Updating transaction with provider {} providerPaymentId {} and status {}", provider, providerPaymentId, status);
+
+        Transaction transaction = transactionRepository
+                .findByPaymentProviderAndProviderPaymentId(provider, providerPaymentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Transaction not found"));
         transaction.setStatus(status);
 
         transactionRepository.save(transaction);

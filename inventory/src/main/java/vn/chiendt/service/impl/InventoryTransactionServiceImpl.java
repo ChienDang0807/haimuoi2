@@ -86,7 +86,6 @@ public class InventoryTransactionServiceImpl implements InventoryTransactionServ
      * @return
      */
     @Override
-
     public Long addInventoryTransaction(InventoryTransactionCreationRequest request) {
         log.info("addInventoryTransaction called");
 
@@ -115,14 +114,14 @@ public class InventoryTransactionServiceImpl implements InventoryTransactionServ
      * @return the transaction ID
      */
 
-    public Long initializeProductInventory(Long productId, Long initialQuantity) {
+    public Long initializeProductInventory(Long productId, Integer initialQuantity, Long referenceId) {
         log.info("Initializing inventory for product ID: {} with quantity: {}", productId, initialQuantity);
 
         InventoryTransactionCreationRequest request = new InventoryTransactionCreationRequest();
         request.setProductId(productId);
         request.setQuantity(initialQuantity);
         request.setType(TransactionType.INITIAL_STOCK);
-        request.setReferenceId(productId); // Use product ID as reference for initial stock
+        request.setReferenceId(referenceId); // Use product ID as reference for initial stock
 
         return addInventoryTransaction(request);
     }

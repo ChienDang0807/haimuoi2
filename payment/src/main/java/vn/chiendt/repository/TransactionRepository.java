@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import vn.chiendt.model.Transaction;
+import vn.chiendt.common.PaymentProvider;
 
 import java.util.Optional;
 
@@ -17,4 +18,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     Page<Transaction> searchTransactionByKeyword(String keyword, Pageable pageable);
 
     Optional<Transaction> findTransactionByPaymentId(String paymentId);
+
+    Optional<Transaction> findByPaymentProviderAndProviderPaymentId(PaymentProvider paymentProvider, String providerPaymentId);
 }

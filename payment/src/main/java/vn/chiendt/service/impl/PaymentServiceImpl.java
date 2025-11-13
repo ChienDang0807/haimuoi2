@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import vn.chiendt.common.Currency;
 import vn.chiendt.common.PaymentMethod;
+import vn.chiendt.common.PaymentProvider;
 import vn.chiendt.common.TransactionStatus;
 import vn.chiendt.dto.request.ChargeRequest;
 import vn.chiendt.dto.request.PaymentIntentRequest;
@@ -133,6 +134,8 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setCustomerId(customerId);
         }
         transaction.setPaymentId(paymentId);
+        transaction.setPaymentProvider(PaymentProvider.STRIPE);
+        transaction.setProviderPaymentId(paymentId);
         transaction.setPaymentMethod(paymentMethod);
         transaction.setAmount(amount);
         transaction.setCurrency(currency);

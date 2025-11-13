@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.SqlTypes;
 import vn.chiendt.common.Currency;
 import vn.chiendt.common.PaymentMethod;
+import vn.chiendt.common.PaymentProvider;
 import vn.chiendt.common.TransactionStatus;
 
 import java.util.Date;
@@ -33,6 +34,14 @@ public class Transaction {
 
     @Column(name = "payment_id")
     private String paymentId;
+
+    @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(name = "payment_provider")
+    private PaymentProvider paymentProvider;
+
+    @Column(name = "provider_payment_id")
+    private String providerPaymentId;
 
     @Enumerated(EnumType.STRING)
     @JdbcTypeCode(SqlTypes.NAMED_ENUM)

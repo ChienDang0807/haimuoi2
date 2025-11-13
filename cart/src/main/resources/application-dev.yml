@@ -1,20 +1,52 @@
+server:
+  port: 8090
+
 spring:
   config:
     activate:
       on-profile: dev
   devtools:
     add-properties: true
-  data:
-    mongodb:
-      uri: mongodb://${MONGO_HOST:localhost}:${MONGO_PORT:27010}/${MONGO_DB:haimuoi2-mongo}?authSource=admin
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5431}/${DATABASE_NAME:cart_db}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:password}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connect-timeout: 5000
+            read-timeout: 5000
 
+# Service URLs
 service:
-  inventoryUrl: ${SERVICE_INVENTORY_URL:http://localhost:8087}
-  productUrl: ${SERVICE_PRODUCT_URL:http://localhost:8084}
+  productUrl: http://localhost:8084
+  inventoryUrl: http://localhost:8087
 
-openapi:
-  service:
-    api-docs: cart-service
-    server: http://localhost:${server.port}
-    title: cart service
-    version: 1.0.0
+# Logging
+logging:
+  level:
+    root: INFO
+    vn.chiendt.cart: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+# Management endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

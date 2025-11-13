@@ -22,10 +22,10 @@ public class InventoryTransaction {
     private Long id;
 
     @Column(name = "product_id")
-    private Long productId;
+    private Long productId; // id sản phẩm ở productId
 
     @Column(name = "quantity")
-    private Long quantity;
+    private Integer quantity;
 
     @Enumerated(EnumType.STRING)
     @JdbcTypeCode(SqlTypes.NAMED_ENUM)
@@ -33,7 +33,7 @@ public class InventoryTransaction {
     private TransactionType type;
 
     @Column(name = "reference_id")
-    private Long referenceId;
+    private Long referenceId; // id sản phẩm trong inventory
 
     @CreationTimestamp
     @Column(name = "created_at")

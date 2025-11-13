@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vn.chiendt.dto.response.InventoryItemResponse;
+import vn.chiendt.mapper.InventoryItemMapper;
 import vn.chiendt.model.InventoryItem;
 import vn.chiendt.repository.InventoryItemRepository;
 import vn.chiendt.service.InventoryItemService;
@@ -14,10 +16,11 @@ import vn.chiendt.service.InventoryItemService;
 public class InventoryItemServiceImpl implements InventoryItemService {
 
     private final InventoryItemRepository inventoryItemRepository;
+    private final InventoryItemMapper inventoryItemMapper;
 
     @Override
     @Transactional
-    public InventoryItem initializeInventory(Long productId, Long initialQuantity) {
+    public InventoryItem initializeInventory(Long productId, Integer initialQuantity) {
         log.info("Initializing inventory for product ID: {} with quantity: {}", productId, initialQuantity);
         
         // Check if inventory already exists for this product
@@ -29,7 +32,7 @@ public class InventoryItemServiceImpl implements InventoryItemService {
         InventoryItem inventoryItem = new InventoryItem();
         inventoryItem.setProductId(productId);
         inventoryItem.setAvailableQuantity(initialQuantity);
-        inventoryItem.setReservedQuantity(0L);
+        inventoryItem.setReservedQuantity(0);
         inventoryItem.setTotalQuantity(initialQuantity);
         
         InventoryItem result = inventoryItemRepository.save(inventoryItem);
@@ -39,19 +42,19 @@ public class InventoryItemServiceImpl implements InventoryItemService {
     }
 
     @Override
-    public InventoryItem getInventoryByProductId(Long productId) {
+    public InventoryItemResponse getInventoryByProductId(Long productId) {
         log.info("Getting inventory for product ID: {}", productId);
         
-        return inventoryItemRepository.findByProductId(productId)
-                .orElseThrow(() -> new IllegalArgumentException("Inventory not found for product ID: " + productId));
+        InventoryItem inventoryItem = findInventoryItemByProductId(productId);
+        return inventoryItemMapper.toInventoryItemResponse(inventoryItem);
     }
 
     @Override
     @Transactional
-    public InventoryItem updateAvailableQuantity(Long productId, Long quantity, boolean isAddition) {
+    public InventoryItemResponse updateAvailableQuantity(Long productId, Integer quantity, boolean isAddition) {
         log.info("Updating available quantity for product ID: {} by {} (addition: {})", productId, quantity, isAddition);
-        
-        InventoryItem inventoryItem = getInventoryByProductId(productId);
+
+        InventoryItem inventoryItem = findInventoryItemByProductId(productId);
         
         if (isAddition) {
             inventoryItem.setAvailableQuantity(inventoryItem.getAvailableQuantity() + quantity);
@@ -67,15 +70,15 @@ public class InventoryItemServiceImpl implements InventoryItemService {
         InventoryItem result = inventoryItemRepository.save(inventoryItem);
         log.info("Available quantity updated for product ID: {}", productId);
         
-        return result;
+        return inventoryItemMapper.toInventoryItemResponse(result);
     }
 
     @Override
     @Transactional
-    public InventoryItem reserveQuantity(Long productId, Long quantity) {
+    public InventoryItemResponse reserveQuantity(Long productId, Integer quantity) {
         log.info("Reserving quantity {} for product ID: {}", quantity, productId);
-        
-        InventoryItem inventoryItem = getInventoryByProductId(productId);
+
+        InventoryItem inventoryItem = findInventoryItemByProductId(productId);
         
         if (inventoryItem.getAvailableQuantity() < quantity) {
             throw new IllegalArgumentException("Insufficient available quantity for reservation. Product ID: " + productId);
@@ -87,15 +90,15 @@ public class InventoryItemServiceImpl implements InventoryItemService {
         InventoryItem result = inventoryItemRepository.save(inventoryItem);
         log.info("Quantity reserved for product ID: {}", productId);
         
-        return result;
+        return inventoryItemMapper.toInventoryItemResponse(result);
     }
 
     @Override
     @Transactional
-    public InventoryItem releaseReservedQuantity(Long productId, Long quantity) {
+    public InventoryItemResponse releaseReservedQuantity(Long productId, Integer quantity) {
         log.info("Releasing reserved quantity {} for product ID: {}", quantity, productId);
-        
-        InventoryItem inventoryItem = getInventoryByProductId(productId);
+
+        InventoryItem inventoryItem = findInventoryItemByProductId(productId);
         
         if (inventoryItem.getReservedQuantity() < quantity) {
             throw new IllegalArgumentException("Insufficient reserved quantity for release. Product ID: " + productId);
@@ -107,6 +110,17 @@ public class InventoryItemServiceImpl implements InventoryItemService {
         InventoryItem result = inventoryItemRepository.save(inventoryItem);
         log.info("Reserved quantity released for product ID: {}", productId);
         
-        return result;
+        return inventoryItemMapper.toInventoryItemResponse(result);
+    }
+
+    @Override
+    public Boolean isInventoryItemAvailable(Long productId, Integer quantity) {
+        Integer availableQuantity = inventoryItemRepository.findAvailableQuantityByProductId(productId);
+        return availableQuantity != null && availableQuantity >= quantity;
+    }
+
+    private InventoryItem findInventoryItemByProductId(Long productId) {
+        return inventoryItemRepository.findByProductId(productId)
+                .orElseThrow(() -> new IllegalArgumentException("Inventory not found for product ID: " + productId));
     }
 }

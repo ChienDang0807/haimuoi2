@@ -5,6 +5,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="init-image-service-and-category-service" />
+    <list default="true" id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="init-image-service-and-category-service">
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/common/Currency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/common/ProductStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/controller/CartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/dto/request/UpdateCartItemRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/dto/response/ApiResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/dto/response/CartResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/dto/response/ProductResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/exception/OutOfStockException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/helpers/CartIdentifierResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/mapper/CartItemMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/mapper/CartMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/repository/CartItemRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/controller/InventoryItemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/dto/response/InventoryItemResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/mapper/InventoryItemMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/vn/chiendt/APIGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/vn/chiendt/APIGatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/vn/chiendt/config/CustomizeFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/vn/chiendt/config/CustomizeFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/ROADMAP.md" beforeDir="false" afterPath="$PROJECT_DIR$/cart/ROADMAP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cart/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/CartApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/CartApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/client/InventoryServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/client/InventoryServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/client/ProductServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/client/ProductServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/dto/response/CartItemResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/dto/response/CartItemResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/model/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/model/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/model/CartItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/repository/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/repository/CartRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/service/CartItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/service/CartService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/service/impl/CartItemServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cart/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/dto/request/InventoryTransactionCreationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/dto/request/InventoryTransactionCreationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/dto/request/InventoryTransactionUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/dto/request/InventoryTransactionUpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/dto/response/InventoryTransactionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/dto/response/InventoryTransactionResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/model/InventoryItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/model/InventoryItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/model/InventoryTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/model/InventoryTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/repository/InventoryItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/repository/InventoryItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/InventoryItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/InventoryItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/SubscribleKafkaMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/SubscribleKafkaMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/impl/InventoryItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/impl/InventoryItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/impl/InventoryTransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/java/vn/chiendt/service/impl/InventoryTransactionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/products/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/dto/response/ProductResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/dto/response/ProductResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/mapper/ProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/mapper/ProductMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/model/ProductDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/model/ProductDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" afterDir="false" />
+    </list>
     <list id="754ca1b9-c16f-4b3c-bb9a-d1de231172cb" name="restore notification service" comment="restore notification service" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +87,8 @@
         <option value="Interface" />
         <option value="Exception" />
         <option value="Dockerfile" />
+        <option value="Exception" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -39,6 +96,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+        <entry key="$PROJECT_DIR$" value="master" />
         <entry key="$PROJECT_DIR$" value="update-cart-service" />
       </map>
     </option>
@@ -70,7 +128,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -165,6 +223,90 @@
     "run.configurations.included.in.services": "true",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.APIGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AccountApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.AuthenticationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CartApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MailApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.NotificationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.OrderApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PaymentApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductApplication.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Docker.docker-compose.yml.elasticsearch: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.kafka-ui: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.kafka: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.kibana: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.mongo: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.postgres: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.redis: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.schema-registry: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.vault: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.infra/docker-compose.kafka.yml.schema-registry: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.infra/docker-compose.kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.infra/docker-compose.minio.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.addProduct_shouldThrowException_whenProductExistsInCache.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.account [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.account [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.api-gateway [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.api-gateway [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authentication [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authentication [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.avro-common [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart-service [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.haimuoi2 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.haimuoi2 [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.haimuoi2 [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.inventory [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.inventory [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.products [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.products [compile].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;New/updated database configurations found&quot;,
+    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;Spring Boot.APIGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CartApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CartServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.InventoryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.OrderApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.PaymentApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ProductApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;update-cart-service&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/haimuoi2/image/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/haimuoi2/image/src/main/java/vn/chiendt/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }]]></component>
   <component name="ReactorSettings">
@@ -206,6 +348,25 @@
         <option value="QuarkusRunConfigurationType" />
         <option value="SpringBootApplicationConfigurationType" />
       </set>
+    </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="Application">
+          <value>
+            <map>
+              <entry key="PaymentApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="InventoryApplication" value="STOPPED" />
+              <entry key="ProductApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
     </option>
   </component>
   <component name="RunManager" selected="JUnit.ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent">
@@ -429,11 +590,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProductServiceTest.addProduct_shouldThrowException_whenProductExistsInCache" />
         <item itemvalue="JUnit.ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent" />
         <item itemvalue="JUnit.ProductServiceTest" />
-        <item itemvalue="Docker.docker-compose.yml.elasticsearch: Compose Deployment" />
+        <item itemvalue="JUnit.ProductServiceTest.addProduct_shouldThrowException_whenProductExistsInCache" />
         <item itemvalue="Docker.infra/docker-compose.minio.yml.minio: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.elasticsearch: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>

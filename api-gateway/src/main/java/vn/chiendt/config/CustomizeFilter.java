@@ -46,12 +46,13 @@ public class CustomizeFilter extends AbstractGatewayFilterFactory<CustomizeFilte
     @Value("${service.authorUrl}")
     private String authorUrl;
 
-    private AuthenticationServiceClient authenticationServiceClient;
+    private final AuthenticationServiceClient authenticationServiceClient;
 
-    public CustomizeFilter( PermissionRepository permissionRepository, VerifyTokenService verifyTokenService) {
+    public CustomizeFilter(PermissionRepository permissionRepository, VerifyTokenService verifyTokenService, AuthenticationServiceClient authenticationServiceClient) {
         super(Config.class);
         this.permissionRepository = permissionRepository;
         this.verifyTokenService = verifyTokenService;
+        this.authenticationServiceClient = authenticationServiceClient;
     }
 
     @Override

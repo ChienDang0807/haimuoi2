@@ -1,8 +1,8 @@
-package vn.chiendt.dto.response;
+package vn.chiendt.cart.dto.response;
 
 import lombok.Getter;
 import lombok.Setter;
-import vn.chiendt.common.ProductStatus;
+import vn.chiendt.cart.common.ProductStatus;
 
 import java.math.BigDecimal;
 import java.time.Instant;
