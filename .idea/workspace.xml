@@ -149,7 +149,7 @@
     "Spring Boot.OrderApplication.executor": "Run",
     "Spring Boot.PaymentApplication.executor": "Run",
     "Spring Boot.ProductApplication.executor": "Run",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "update-cart-service",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/haimuoi2/image/src/main/resources",
@@ -206,25 +206,6 @@
         <option value="QuarkusRunConfigurationType" />
         <option value="SpringBootApplicationConfigurationType" />
       </set>
-    </option>
-    <option name="configurationStatuses">
-      <map>
-        <entry key="Application">
-          <value>
-            <map>
-              <entry key="PaymentApplication" value="STOPPED" />
-            </map>
-          </value>
-        </entry>
-        <entry key="SpringBootApplicationConfigurationType">
-          <value>
-            <map>
-              <entry key="InventoryApplication" value="STOPPED" />
-              <entry key="ProductApplication" value="STOPPED" />
-            </map>
-          </value>
-        </entry>
-      </map>
     </option>
   </component>
   <component name="RunManager" selected="JUnit.ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent">
