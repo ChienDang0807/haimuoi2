@@ -4,33 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="init-image-service-and-category-service">
-      <change afterPath="$PROJECT_DIR$/docker/infra/docker-compose.minio.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/IMAGE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/config/MinioConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/model/ProductImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/service/MinioService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/src/test/java/vn/chiendt/ProductApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/src/test/java/vn/chiendt/service/ProductServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_6_2025_5_23_PM_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_6_2025_5_23_PM__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compose/docker-compose.base.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/compose/docker-compose.base.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compose/docker-compose.services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/compose/docker-compose.services.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/image/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/ImageApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/image/src/main/java/vn/chiendt/ImageApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/image/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/docker-compose.db.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.db.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/docker-compose.els.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.els.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/docker-compose.kafka.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.kafka.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/docker-compose.monitor.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/infra/docker-compose.monitor.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/products/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/products/src/main/java/vn/chiendt/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/start-all.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/docker/scripts/start-all.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/start-kafka.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker/scripts/start-kafka.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/stop-all.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/docker/scripts/stop-all.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/shop/SHOP.md" afterDir="false" />
-    </list>
+    <list default="true" id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="init-image-service-and-category-service" />
     <list id="754ca1b9-c16f-4b3c-bb9a-d1de231172cb" name="restore notification service" comment="restore notification service" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="create-cart-service" />
+        <entry key="$PROJECT_DIR$" value="update-cart-service" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -175,7 +149,7 @@
     "Spring Boot.OrderApplication.executor": "Run",
     "Spring Boot.PaymentApplication.executor": "Run",
     "Spring Boot.ProductApplication.executor": "Run",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "develop",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/haimuoi2/image/src/main/resources",
@@ -474,11 +448,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProductServiceTest.addProduct_shouldThrowException_whenProductExistsInCache" />
         <item itemvalue="JUnit.ProductServiceTest.addProduct_shouldSaveProductAndSendKafkaEvent" />
         <item itemvalue="JUnit.ProductServiceTest" />
-        <item itemvalue="JUnit.ProductServiceTest.addProduct_shouldThrowException_whenProductExistsInCache" />
-        <item itemvalue="Docker.infra/docker-compose.minio.yml.minio: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.elasticsearch: Compose Deployment" />
+        <item itemvalue="Docker.infra/docker-compose.minio.yml.minio: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
