@@ -7,5 +7,4 @@ notification: 8088
 order:8085
 payment:8086
 product: 8084
-shop: 8089
 category: 8091

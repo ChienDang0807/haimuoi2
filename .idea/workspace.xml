@@ -5,12 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e23f229e-e69f-45cb-9637-ccdffca11fe0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/common/PaymentProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/security/UserContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/security/UserContextFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/src/main/java/vn/chiendt/dto/response/AddressResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/main/java/vn/chiendt/cart/helpers/CartIdentifierResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/dto/response/AddressResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/src/main/java/vn/chiendt/controller/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/account/src/main/java/vn/chiendt/controller/AddressController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/src/main/java/vn/chiendt/model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/account/src/main/java/vn/chiendt/model/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/src/main/java/vn/chiendt/repository/AddressRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/account/src/main/java/vn/chiendt/repository/AddressRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/src/main/java/vn/chiendt/service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/account/src/main/java/vn/chiendt/service/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/src/main/java/vn/chiendt/service/impl/AddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/account/src/main/java/vn/chiendt/service/impl/AddressServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/src/test/java/vn/chiendt/cart/CartServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/feign/AccountServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/vn/chiendt/feign/AccountServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/SHOP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/main/java/vn/chiendt/shop/ShopApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/main/resources/application-dev.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/test/java/vn/chiendt/shop/ShopApplicationTests.java" beforeDir="false" />
     </list>
     <list id="754ca1b9-c16f-4b3c-bb9a-d1de231172cb" name="restore notification service" comment="restore notification service" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +93,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -677,6 +693,16 @@
             <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
+                  <option value="update-cart-service" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="feature/add-shop-service" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
                   <option value="create-inventory-service" />
                 </option>
               </RecentGroup>
@@ -706,7 +732,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="update-cart-service" />
                       </list>
                     </value>
                   </entry>

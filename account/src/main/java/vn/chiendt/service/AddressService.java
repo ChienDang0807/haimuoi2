@@ -1,6 +1,6 @@
 package vn.chiendt.service;
 
-import vn.chiendt.model.Address;
+import vn.chiendt.dto.response.AddressResponse;
 
 import java.util.List;
 
@@ -10,12 +10,12 @@ public interface AddressService {
      * @param userId
      * @return
      */
-    List<Address> findAllAddressByUserId(Long userId);
+    List<AddressResponse> findAllAddressByUserId(Long userId);
 
     /**
      *  Find address by userId and addressName
      * @param
      * @return
      */
-    Address findAddressById(Long id);
+    AddressResponse findAddressById(Long id);
 }

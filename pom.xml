@@ -26,10 +26,7 @@
         <module>payment</module>
         <module>inventory</module>
         <module>notification</module>
-        <module>shop</module>
         <module>cart</module>
-        <module>category</module>
-        <module>image</module>
     </modules>
 
     <properties>

@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import vn.chiendt.model.Address;
+import vn.chiendt.dto.response.AddressResponse;
 import vn.chiendt.service.AddressService;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class AddressController {
 
     @Operation(summary = "Get all addresses by user id", description = "Get all addresses by user id")
     @GetMapping("/list/{userId}")
-    public ResponseEntity<List<Address>> getListAddress(@PathVariable Long userId) {
+    public ResponseEntity<List<AddressResponse>> getListAddress(@PathVariable Long userId) {
         log.info("Get address list");
 
         return ResponseEntity.ok(addressService.findAllAddressByUserId(userId));
@@ -30,7 +30,7 @@ public class AddressController {
 
     @Operation(summary = "Get address by id", description = "Get address by id")
     @GetMapping("/{addressId}")
-    public ResponseEntity<Address> getAddressDetail(@PathVariable Long addressId) {
+    public ResponseEntity<AddressResponse> getAddressDetail(@PathVariable Long addressId) {
         log.info("Get address ");
 
         return ResponseEntity.ok(addressService.findAddressById(addressId));

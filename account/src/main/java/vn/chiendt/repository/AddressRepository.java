@@ -1,7 +1,6 @@
 package vn.chiendt.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import vn.chiendt.model.Address;
 
@@ -14,4 +13,6 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
     Optional<Address> findAddressById(Long id);
 
     List<Address> findAllByUserId(Long userId);
+
+    Address findByUserIdAndAddressType(Long userId, String addressType);
 }

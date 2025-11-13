@@ -20,7 +20,7 @@ public class Address {
     private Long id;
 
     @Column(name = "address_type")
-    private String addressName;
+    private String addressType;
 
     @Column(name = "user_id")
     private Long userId;
